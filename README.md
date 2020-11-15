@@ -3,7 +3,6 @@
 DVSwitch 서버가 설치된 상태에서 사용이 가능하다.
 #
 ### 설치방법:
-
   sudo wget https://github.com/hl5ky/dvsmu/raw/main/setup
   
   sudo chmod +x setup
