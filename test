@@ -2,19 +2,6 @@
 
 clear
 
-echo
-echo
-echo "----------------  Please Wait  ---------------------"
-
-if [ ! -e /var/lib/dvswitch/dvs/test.txt ] || [ ! -d /usr/local/dvs ]; then
-echo
-echo
-echo "--------  DVSwitch가 설치되지 않았습니다  ----------"
-echo
-echo
-exit 0
-fi
-
 
 
 
