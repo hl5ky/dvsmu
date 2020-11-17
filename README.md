@@ -5,7 +5,7 @@ DVSwitch 서버가 설치된 상태에서 사용이 가능하다.
 ### 설치방법:
   - sudo wget https://github.com/hl5ky/dvsmu/raw/main/setup
   - sudo chmod +x setup
-  - ./setup
+  - sudo ./setup
 #
 ### 특징:
   - 하나의 서버에 여러 명의 사용자를 추가할 수 있다.
