@@ -29,7 +29,8 @@
 #
 ### History:
   v.1.4.9 (2020. 11. 25.)
-  - 핫스팟의 호출부호가 talkerAlias의 내용에 없으면, 초기화면에 talkerAlias 내용 추가 표시
+  - 핫스팟의 호출부호가 talkerAlias의 내용에 없으면,
+ 초기화면에 talkerAlias 내용 추가 표시
     ( talkerAlias가 공백이면 기본화면 표시)
     
   v.1.4.8 (2020. 11. 23.)
