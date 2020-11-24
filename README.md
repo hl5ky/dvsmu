@@ -1,6 +1,6 @@
 본 프로그램은 DVSwitch 서버에 여러 사용자의 서버를 함께 구성할 수 있도록 만드는 보조 프로그램이다.
 
-즉, DVSwitch 서버가 설치되어 있어야 사용이 가능하다.
+즉, DVSwitch 서버와 함께 사용하여야 한다.
 #
 ### 설치방법:
   - sudo wget https://github.com/hl5ky/dvsmu/raw/main/setup
