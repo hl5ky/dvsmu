@@ -29,9 +29,9 @@
 #
 ### History:
   v.1.4.9 (2020. 11. 25.)
-  - 핫스팟의 호출부호가 talkerAlias의 내용에 없으면,
- 초기화면에 talkerAlias 내용 추가 표시
-    ( talkerAlias가 공백이면 기본화면 표시)
+  - 초기 메인 메뉴의 내용
+  기본 화면 : talkerAlias의 내용이 공백이거나, 핫스팟의 호출부호를 포함함.
+  기본 화면 + talkerAlias 표시 : talkerAlias의 내용이 공백이 아니고, 핫스팟의 호출부호를 포함하지 않음.
     
   v.1.4.8 (2020. 11. 23.)
   - 추가사용자의 talkerAlias 변경 항목 추가
