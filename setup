@@ -107,7 +107,7 @@ else
         echo "------------- 잠시후 다시 연결하십시오. -------------"
         echo
         echo
-                sudo rm setup.sh > /dev/null 2>&1
+                sudo rm setup > /dev/null 2>&1
                 sudo reboot
         fi
 
