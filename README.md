@@ -2,11 +2,12 @@
 
 즉, DVSwitch 서버와 함께 사용하여야 한다.
 #
-### 설치방법:
+### 설치 방법:
   - sudo wget https://github.com/hl5ky/dvsmu/raw/main/setup
   - sudo chmod +x setup
   - sudo ./setup
-
+#
+### 추가 설정:
   - 로칼 시간 설정 (자동리부팅시를 위하여 설정 필요) https://blog.buffashe.com/2020/02/changing-ubuntu-timezone
   - 디스크 SWAP 설정. https://yeon-kr.tistory.com/174
   - 포트 개방 https://kibua20.tistory.com/124
