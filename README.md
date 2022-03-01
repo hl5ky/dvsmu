@@ -7,10 +7,10 @@
   - sudo chmod +x setup
   - sudo ./setup
 #
-### 추가 설정:
+### 오라클 클라우드에 설치시 필요한 추가 설정:
   - 로칼 시간 설정 (자동리부팅을 위하여 설정 필요) https://blog.buffashe.com/2020/02/changing-ubuntu-timezone
-  - 디스크 SWAP 설정 (오라클 클라우드에 설치시 필요) https://yeon-kr.tistory.com/174
-  - 포트 개방 (오라클 클라우드에서 포트 개방 방법) https://kibua20.tistory.com/124
+  - 디스크 SWAP 설정 https://yeon-kr.tistory.com/174
+  - 포트 개방 https://kibua20.tistory.com/124
 #
 ### 특징:
   - 하나의 서버에 최고 40 명의 사용자를 추가할 수 있다.
