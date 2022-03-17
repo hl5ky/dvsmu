@@ -2,16 +2,6 @@
 
 즉, DVSwitch 서버와 함께 사용하여야 한다.
 #
-### 설치 방법:
-  - sudo wget https://github.com/hl5ky/dvsmu/raw/main/setup
-  - sudo chmod +x setup
-  - sudo ./setup
-#
-### 오라클 클라우드에 설치시 필요한 추가 설정:
-  - 로칼 시간 설정 (자동리부팅 등의 시간 설정시 로칼시간으로 입력) https://blog.buffashe.com/2020/02/changing-ubuntu-timezone
-  - 디스크 SWAP 설정 https://yeon-kr.tistory.com/174
-  - 추가사용자의 포트 개방 https://kibua20.tistory.com/124
-#
 ### 특징:
   - 하나의 서버에 최고 40 명의 사용자를 추가할 수 있다.
   - 전체 사용자의 호출부호, DMR ID, USRP Port 현황을 한 화면에서 볼 수 있다.
@@ -23,6 +13,16 @@
   - 업그레이드시 각 사용자의 정보는 자동으로 재설정된다.
   - dvsMU의 업그레이드도 메뉴에서 가능하다.
   - 시스템 최적화를 통해서 보다 안정된 시스템을 만들 수 있다.
+#
+### 설치 방법:
+  - sudo wget https://github.com/hl5ky/dvsmu/raw/main/setup
+  - sudo chmod +x setup
+  - sudo ./setup
+#
+### 오라클 클라우드에 설치시 필요한 추가 설정:
+  - 로칼 시간 설정 (자동리부팅 등의 시간 설정시 로칼시간으로 입력) https://blog.buffashe.com/2020/02/changing-ubuntu-timezone
+  - 디스크 SWAP 설정 https://yeon-kr.tistory.com/174
+  - 추가사용자의 포트 개방 https://kibua20.tistory.com/124
 #
 ### 실행방법:
   - 터미널모드에서 dvsmu를 입력하고 엔터를 누르면 실행된다.
