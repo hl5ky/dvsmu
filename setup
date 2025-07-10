@@ -6,6 +6,33 @@ echo
 echo
 
 echo "----------------  Please Wait  ---------------------"
+echo
+sudo apt-get update > /dev/null 2>&1
+echo "----------------------------------------------------"
+echo
+
+pkg="dvswitch-server"
+installed_ver=$(dpkg-query -W -f='${Version}' "$pkg" 2>/dev/null)
+
+if [ -z "$installed_ver" ]; then
+
+echo "--------  DVSwitch가 설치되지 않았습니다  ----------"
+echo
+echo "--------  DVSwitch를 설치합니다 --------------------"
+        sudo apt-get install "$pkg" -y > /dev/null 2>&1
+else
+
+echo "--------  DVSwitch가 설치되어 있습니다 -------------"
+echo
+echo "--------  계속 진행합니다 --------------------------"
+fi
+
+sudo apt-get install multitail > /dev/null 2>&1
+
+sudo apt install htop -y  > /dev/null 2>&1
+
+#--------------------------------------------------------
+
 sudo wget -O /var/lib/dvswitch/dvs/var00.txt https://raw.githubusercontent.com/hl5btf/DVSMU/main/var00.txt > /dev/null 2>&1
 
 files="analog_bridge00.service mmdvm_bridge00.service md380-emu00.service"
@@ -67,29 +94,6 @@ echo "#time=3" | sudo tee -a $file > /dev/null 2>&1
 echo "0 3 * * * root /usr/local/dvs/man_log" | sudo tee -a $file > /dev/null 2>&1
 echo "$cron_daily_min_plus_3 $cron_daily_time * * * root /usr/local/dvs/DMRIds_chk.sh" | sudo tee -a $file > /dev/null 2>&1
 echo "*/5 * * * * root /usr/local/dvs/bm_watchdog.sh" | sudo tee -a $file > /dev/null 2>&1
-
-echo "-------------  Please Wait 10 ~ 30 sec  -----------------"
-sudo apt-get update > /dev/null 2>&1
-echo "----------------------------------------------------"
-sudo apt-get install multitail > /dev/null 2>&1
-
-sudo apt install htop -y  > /dev/null 2>&1
-
-pkg="dvswitch-server"
-installed_ver=$(dpkg-query -W -f='${Version}' "$pkg" 2>/dev/null)
-
-if [ -z "$installed_ver" ]; then
-
-echo "--------  DVSwitch가 설치되지 않았습니다  ----------"
-echo
-echo "--------  DVSwitch를 설치합니다 --------------------"
-        sudo apt-get install "$pkg" -y > /dev/null 2>&1
-else
-
-echo "--------  DVSwitch가 설치되어 있습니다 -------------"
-echo
-echo "--------  계속 진행합니다 --------------------------"
-fi
 
 #--------------------------------------------------------
 
