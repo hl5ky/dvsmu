@@ -4,17 +4,26 @@ clear
 
 echo
 echo
-echo "----------------  Please Wait  ---------------------"
 
-if [ ! -d /var/lib/dvswitch/dvs ] || [ ! -d /usr/local/dvs ]; then
-echo
-echo
+pkg="dvswitch-server"
+
+installed_ver=$(dpkg-query -W -f='${Version}' "$pkg" 2>/dev/null)
+
+if [ -z "$installed_ver" ]; then
+        # dvswitch가 설치되지 않았음
 echo "--------  DVSwitch가 설치되지 않았습니다  ----------"
 echo
+echo "--------  DVSwitch를 설치합니다 --------------------"
+        sudo apt-get install "$pkg" -y
+else
+        # 설치되어 있음
+echo "--------  DVSwitch가 설치되어 있습니다 -------------"
 echo
-exit 0
+echo "--------  계속 진행합니다 --------------------------"
 fi
 
+echo
+echo "----------------  Please Wait  ---------------------"
 sudo wget -O /var/lib/dvswitch/dvs/var00.txt https://raw.githubusercontent.com/hl5btf/DVSMU/main/var00.txt > /dev/null 2>&1
 
 files="analog_bridge00.service mmdvm_bridge00.service md380-emu00.service"
