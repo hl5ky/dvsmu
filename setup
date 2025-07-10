@@ -15,6 +15,13 @@ echo
 exit 0
 fi
 
+echo "------------ update 확인 중, 1~2분 소요 ------------"
+sudo apt update > /dev/null 2>&1
+
+echo " --------------- 관련 프로그램 설치 -----------------"
+sudo apt install htop -y
+
+
 sudo wget -O /var/lib/dvswitch/dvs/var00.txt https://raw.githubusercontent.com/hl5btf/DVSMU/main/var00.txt > /dev/null 2>&1
 
 
