@@ -21,8 +21,8 @@ echo
 files="dvsmu man_log DMRIds_chk.sh bm_watchdog.sh config_main_user.sh"
 
 for file in $files; do
-sudo wget -O /var/lib/dvswitch/dvs/$file https://raw.githubusercontent.com/hl5btf/DVSMU/main/$file > /dev/null 2>&1
-sudo chmod +x /var/lib/dvswitch/dvs/$file
+sudo wget -O /usr/local/dvs/$file https://raw.githubusercontent.com/hl5btf/DVSMU/main/$file > /dev/null 2>&1
+sudo chmod +x /usr/local/dvs/$file
 echo "----------------------------------------------------"
 done
 
@@ -61,17 +61,6 @@ sudo wget -O /var/lib/dvswitch/dvs/adv/user00KR/$file https://raw.githubusercont
 echo "----------------------------------------------------"
 done
 
-file=man_log
-sudo wget -O /usr/local/dvs/$file https://raw.githubusercontent.com/hl5btf/DVSMU/main/$file > /dev/null 2>&1
-sudo chmod +x /usr/local/dvs/$file
-
-file=DMRIds_chk.sh
-sudo wget -O /usr/local/dvs/$file https://raw.githubusercontent.com/hl5btf/DVSMU/main/$file > /dev/null 2>&1
-sudo chmod +x /usr/local/dvs/$file
-
-file=bm_watchdog.sh
-sudo wget -O /usr/local/dvs/$file https://raw.githubusercontent.com/hl5btf/DVSMU/main/$file > /dev/null 2>&1
-sudo chmod +x /usr/local/dvs/$file
 
 file=/etc/crontab
 
