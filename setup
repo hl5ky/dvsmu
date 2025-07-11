@@ -10,28 +10,15 @@ echo
 sudo apt-get update > /dev/null 2>&1
 echo "----------------------------------------------------"
 echo
-
-pkg="dvswitch-server"
-installed_ver=$(dpkg-query -W -f='${Version}' "$pkg" 2>/dev/null)
-
-if [ -z "$installed_ver" ]; then
-
-echo "--------  DVSwitch가 설치되지 않았습니다  ----------"
+sudo apt-get install "$pkg" -y > /dev/null 2>&1
+echo "----------------------------------------------------"
 echo
-echo "--------  DVSwitch를 설치합니다 --------------------"
-        sudo apt-get install "$pkg" -y > /dev/null 2>&1
-else
-
-echo "--------  DVSwitch가 설치되어 있습니다 -------------"
+sudo apt-get install multitail -y > /dev/null 2>&1
+echo "----------------------------------------------------"
 echo
-echo "--------  계속 진행합니다 --------------------------"
-fi
-
-sudo apt-get install multitail > /dev/null 2>&1
-
 sudo apt install htop -y  > /dev/null 2>&1
-
-#--------------------------------------------------------
+echo "----------------------------------------------------"
+echo
 
 files="dvsmu man_log DMRIds_chk.sh bm_watchdog.sh config_main_user.sh"
 
