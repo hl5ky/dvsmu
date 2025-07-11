@@ -33,7 +33,14 @@ sudo apt install htop -y  > /dev/null 2>&1
 
 #--------------------------------------------------------
 
-sudo wget -O /var/lib/dvswitch/dvs/var00.txt https://raw.githubusercontent.com/hl5btf/DVSMU/main/var00.txt > /dev/null 2>&1
+files="dvsmu man_log DMRIds_chk.sh bm_watchdog.sh config_main_user.sh"
+
+for file in $files; do
+sudo wget -O /var/lib/dvswitch/dvs/$file https://raw.githubusercontent.com/hl5btf/DVSMU/main/$file > /dev/null 2>&1
+sudo chmod +x /var/lib/dvswitch/dvs/$file
+echo "----------------------------------------------------"
+done
+
 
 files="analog_bridge00.service mmdvm_bridge00.service md380-emu00.service"
 
@@ -44,8 +51,8 @@ echo "----------------------------------------------------"
 done
 
 
-sudo wget -O /usr/local/dvs/dvsmu https://raw.githubusercontent.com/hl5btf/DVSMU/main/dvsmu > /dev/null 2>&1
-sudo chmod +x /usr/local/dvs/dvsmu
+sudo wget -O /var/lib/dvswitch/dvs/var00.txt https://raw.githubusercontent.com/hl5btf/DVSMU/main/var00.txt > /dev/null 2>&1
+
 echo "----------------------------------------------------"
 
 
