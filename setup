@@ -77,15 +77,49 @@ echo "$cron_daily_min_plus_3 $cron_daily_time * * * root /usr/local/dvs/DMRIds_c
 echo "*/5 * * * * root /usr/local/dvs/bm_watchdog.sh" | sudo tee -a $file > /dev/null 2>&1
 
 #--------------------------------------------------------
-### PATH 추가
-file=/etc/profile
-text="/opt/MMDVM_Bridge"
+### PATH 추가 ( 아래 내용 싱행후에 콘솔에서 source /etc/profile 를 실행해야 적용됨)
+file="/etc/profile"
 
-# 이미 /opt/MMDVM_Bridge가 포함되어 있지 않으면 추가
-if ! grep -q "$text" "$file"; then
-  echo "---------------------PATH 추가"
-  echo "export PATH=\$PATH:/opt/MMDVM_Bridge" | sudo tee -a "$file" > /dev/null
+# 추가할 디렉토리 목록
+read -r -d '' new_dirs << 'EOF'
+/opt/MMDVM_Bridge
+/usr/local/dvs
+EOF
+
+# 1. 기존 PATH 라인들 모두 추출
+existing_path_lines=$(grep -n '^export PATH=' "$file" | cut -d: -f1)
+
+# 2. 기존 경로 모으기
+existing_paths=""
+for line_no in $existing_path_lines; do
+    line=$(sed -n "${line_no}p" "$file")
+    # $PATH:$dir1:$dir2 형식에서 실제 경로만 추출
+    paths=$(echo "$line" | sed -E 's/^export PATH=\$PATH:?//; s/["]//g' | tr ':' '\n')
+    for path in $paths; do
+        existing_paths="$existing_paths"$'\n'"$path"
+    done
+done
+
+# 3. 새로 추가할 디렉토리와 기존 경로들을 하나로 정리
+all_paths="$existing_paths"
+for dir in $new_dirs; do
+    all_paths="$all_paths"$'\n'"$dir"
+done
+
+# 4. 중복 제거 + 다시 PATH 라인으로 조립
+unique_paths=$(echo "$all_paths" | grep -v '^$' | sort -u | tr '\n' ':' | sed 's/:$//')
+new_export_line="export PATH=\$PATH:$unique_paths"
+
+# 5. 기존 PATH 라인 모두 삭제
+if [ -n "$existing_path_lines" ]; then
+    sudo sed -i '/^export PATH=/d' "$file"
 fi
+
+# 6. 새 export PATH 줄 추가
+echo "$new_export_line" | sudo tee -a "$file" > /dev/null
+
+# 콘솔에서 source /etc/profile 를 실행해야 적용됨
+
 #--------------------------------------------------------
 ### add_aliases.sh routine
 file=add_aliases.sh
