@@ -77,6 +77,14 @@ echo "$cron_daily_min_plus_3 $cron_daily_time * * * root /usr/local/dvs/DMRIds_c
 echo "*/5 * * * * root /usr/local/dvs/bm_watchdog.sh" | sudo tee -a $file > /dev/null 2>&1
 
 #--------------------------------------------------------
+### add_aliases.sh routine
+file=add_aliases.sh
+sudo wget https://raw.githubusercontent.com/hl5btf/DVSwitch/main/$file
+sudo chmod +x $file
+sudo ./$file
+
+sudo rm $file
+#---------------------------------------------------------
 
 path=$(echo $PATH)
 
