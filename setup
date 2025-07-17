@@ -8,7 +8,7 @@ echo
 sudo apt-get update > /dev/null 2>&1
 echo "----------------------------------------------------"
 echo
-sudo apt-get install --only-upgrade 'dvswitch-server*' -y > /dev/null 2>&1
+sudo apt-get install 'dvswitch-server*' -y > /dev/null 2>&1
 echo "----------------------------------------------------"
 echo
 sudo apt-get install multitail -y > /dev/null 2>&1
