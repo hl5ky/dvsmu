@@ -124,14 +124,6 @@ function set_crontab() {
 
 FILE_CRON=/etc/crontab
 
-# <<<crontab에서 daily가 있는 줄의 내용 : 25 6    * * *   root    test -x /usr/sbin/anacron || ( cd / && run-parts --report /etc/cron.daily )>>>
-
-cron_daily_time=$(sed -n -e '/cron.daily/p' $FILE_CRON | cut -f 2 -d' ')
-cron_daily_time=$(echo $cron_daily_time | cut -f1 -d' ')
-cron_daily_min=$(sed -n -e '/cron.daily/p' $FILE_CRON | cut -f 1 -d' ')
-cron_daily_min_plus_3=$((cron_daily_min + 3))
-cron_daily_min_plus_4=$((cron_daily_min + 4))
-
 if ! sudo grep -q "time=" "$FILE_CRON"; then
     echo "#time=3" | sudo tee -a $FILE_CRON
 fi
@@ -145,7 +137,7 @@ if ! sudo grep -q "man_log" "$FILE_CRON"; then
 fi
 
 if ! sudo grep -q "DMRIds" "$FILE_CRON"; then
-    echo "$cron_daily_min_plus_3 $cron_daily_time * * * root /usr/local/dvs/DMRIds_chk.sh" | sudo tee -a $FILE_CRON
+    echo "28 6 * * * root /usr/local/dvs/DMRIds_chk.sh" | sudo tee -a $FILE_CRON
 fi
 
 if ! sudo grep -q "bm_watchdog" "$FILE_CRON"; then
