@@ -1,86 +1,25 @@
 #!/bin/bash
 
-clear
-echo
-echo
-echo "----------------  Please Wait  ---------------------"
-echo
+source /var/lib/dvswitch/dvs/var.txt > /dev/null 2>&1
+
+user_array=(01 02 03 04 05 06 07 08 09 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40)
+
+#====== installation_apps =============================================
+function installation_apps() {
+
 sudo apt-get update > /dev/null 2>&1
-echo "----------------------------------------------------"
-echo
+
 sudo apt-get install dvswitch-server -y > /dev/null 2>&1
-echo "----------------------------------------------------"
-echo
+
 sudo apt-get install multitail -y > /dev/null 2>&1
-echo "----------------------------------------------------"
-echo
+
 sudo apt install htop -y  > /dev/null 2>&1
-echo "----------------------------------------------------"
-echo
-
-files="dvsmu man_log DMRIds_chk.sh bm_watchdog.sh config_main_user.sh"
-
-for file in $files; do
-sudo wget -O /usr/local/dvs/$file https://raw.githubusercontent.com/hl5btf/DVSMU/main/$file > /dev/null 2>&1
-sudo chmod +x /usr/local/dvs/$file
-echo "----------------------------------------------------"
-done
+}
 
 
-files="analog_bridge00.service mmdvm_bridge00.service md380-emu00.service"
+#====== set_path =============================================
+function set_path() {
 
-for file in $files; do
-sudo wget -O /var/lib/dvswitch/dvs/$file https://raw.githubusercontent.com/hl5btf/DVSMU/main/$file > /dev/null 2>&1
-sudo chmod +x /var/lib/dvswitch/dvs/$file
-echo "----------------------------------------------------"
-done
-
-
-sudo wget -O /var/lib/dvswitch/dvs/var00.txt https://raw.githubusercontent.com/hl5btf/DVSMU/main/var00.txt > /dev/null 2>&1
-echo
-echo "----------------------------------------------------"
-
-
-sudo mkdir /var/lib/dvswitch/dvs/adv/user00 > /dev/null 2>&1
-sudo wget -O /var/lib/dvswitch/dvs/adv/user00/dvsm.macro https://raw.githubusercontent.com/hl5btf/DVSMU/main/dvsm.macro > /dev/null 2>&1
-sudo wget -O /var/lib/dvswitch/dvs/adv/user00/dvsm.adv https://raw.githubusercontent.com/hl5btf/DVSMU/main/dvsm.adv > /dev/null 2>&1
-echo
-echo "----------------------------------------------------"
-sudo wget -O /var/lib/dvswitch/dvs/adv/user00/dvsm.basic https://raw.githubusercontent.com/hl5btf/DVSMU/main/dvsm.basic > /dev/null 2>&1
-sudo wget -O /var/lib/dvswitch/dvs/adv/user00/dvsm.sh https://raw.githubusercontent.com/hl5btf/DVSMU/main/dvsm.sh > /dev/null 2>&1
-sudo chmod +x /var/lib/dvswitch/dvs/adv/user00/dvsm.sh
-echo
-echo "----------------------------------------------------"
-
-sudo mkdir /var/lib/dvswitch/dvs/adv/user00EN > /dev/null 2>&1
-sudo mkdir /var/lib/dvswitch/dvs/adv/user00KR > /dev/null 2>&1
-
-files="adv_audio.txt adv_dmr.txt adv_hotspot.txt adv_main.txt adv_managetg.txt adv_resetfvrt.txt adv_rxgain.txt adv_tgref.txt adv_tools.txt adv_txgain.txt"
-
-for file in $files; do
-sudo wget -O /var/lib/dvswitch/dvs/adv/user00EN/$file https://raw.githubusercontent.com/hl5btf/DVSMU/main/EN/$file > /dev/null 2>&1
-sudo wget -O /var/lib/dvswitch/dvs/adv/user00KR/$file https://raw.githubusercontent.com/hl5btf/DVSMU/main/KR/$file > /dev/null 2>&1
-echo
-echo "----------------------------------------------------"
-done
-
-
-file=/etc/crontab
-
-cron_daily_time=$(sed -n -e '/cron.daily/p' $file | cut -f 2 -d' ')
-cron_daily_time=$(echo $cron_daily_time | cut -f1 -d' ')
-cron_daily_min=$(sed -n -e '/cron.daily/p' $file | cut -f 1 -d' ')
-cron_daily_min_plus_3=$((cron_daily_min + 3))
-cron_daily_min_plus_4=$((cron_daily_min + 4))
-
-echo "#reboot=yes" | sudo tee -a $file > /dev/null 2>&1
-echo "#time=3" | sudo tee -a $file > /dev/null 2>&1
-echo "0 3 * * * root /usr/local/dvs/man_log" | sudo tee -a $file > /dev/null 2>&1
-echo "$cron_daily_min_plus_3 $cron_daily_time * * * root /usr/local/dvs/DMRIds_chk.sh" | sudo tee -a $file > /dev/null 2>&1
-echo "*/5 * * * * root /usr/local/dvs/bm_watchdog.sh" | sudo tee -a $file > /dev/null 2>&1
-
-#--------------------------------------------------------
-### PATH 추가 ( 아래 내용 싱행후에 콘솔에서 source /etc/profile 를 실행해야 적용됨)
 file="/etc/profile"
 
 # 추가할 디렉토리 목록
@@ -120,33 +59,163 @@ fi
 
 # 6. 새 export PATH 줄 추가
 echo "$new_export_line" | sudo tee -a "$file" > /dev/null
+}
 
-# 콘솔에서 source /etc/profile 를 실행해야 적용됨
+#====== set_alias =============================================
+function set_alias() {
 
-#--------------------------------------------------------
-### add_aliases.sh routine
 file=add_aliases.sh
-sudo wget https://raw.githubusercontent.com/hl5btf/DVSwitch/main/$file
+sudo wget https://raw.githubusercontent.com/hl5btf/DVSwitch/main/$file > /dev/null
 sudo chmod +x $file
 sudo ./$file
 
 sudo rm $file
-#---------------------------------------------------------
+}
 
-echo
-echo "----------------------------------------------------"
+#====== copy_files_for_userXX =============================================
+function copy_files_for_userXX() {
 
-echo "------------------  FINISHED  ----------------------"
-echo
-echo "-------------- 재부팅후 정상 작동함 ----------------"
-echo
-echo "---------- 재부팅 하시겠습니까? (y/n) --------------"
-read reply
-if [ "$reply" = Y ] || [ "$reply" = y ] || [ "$reply" = "" ]; then
-clear
-sudo rm setup > /dev/null 2>&1
-sudo reboot
+files="analog_bridge00.service mmdvm_bridge00.service md380-emu00.service"
+
+for file in $files; do
+sudo wget -O /var/lib/dvswitch/dvs/$file https://raw.githubusercontent.com/hl5btf/DVSMU/main/$file > /dev/null 2>&1
+sudo chmod +x /var/lib/dvswitch/dvs/$file
+done
+
+sudo wget -O /var/lib/dvswitch/dvs/var00.txt https://raw.githubusercontent.com/hl5btf/DVSMU/main/var00.txt > /dev/null 2>&1
+
+sudo mkdir /var/lib/dvswitch/dvs/adv/user00 > /dev/null 2>&1
+sudo wget -O /var/lib/dvswitch/dvs/adv/user00/dvsm.macro https://raw.githubusercontent.com/hl5btf/DVSMU/main/dvsm.macro > /dev/null 2>&1
+sudo wget -O /var/lib/dvswitch/dvs/adv/user00/dvsm.adv https://raw.githubusercontent.com/hl5btf/DVSMU/main/dvsm.adv > /dev/null 2>&1
+sudo wget -O /var/lib/dvswitch/dvs/adv/user00/dvsm.basic https://raw.githubusercontent.com/hl5btf/DVSMU/main/dvsm.basic > /dev/null 2>&1
+sudo wget -O /var/lib/dvswitch/dvs/adv/user00/dvsm.sh https://raw.githubusercontent.com/hl5btf/DVSMU/main/dvsm.sh > /dev/null 2>&1
+sudo chmod +x /var/lib/dvswitch/dvs/adv/user00/dvsm.sh
+
+sudo mkdir /var/lib/dvswitch/dvs/adv/user00EN > /dev/null 2>&1
+sudo mkdir /var/lib/dvswitch/dvs/adv/user00KR > /dev/null 2>&1
+
+files="adv_audio.txt adv_dmr.txt adv_hotspot.txt adv_main.txt adv_managetg.txt adv_resetfvrt.txt adv_rxgain.txt adv_tgref.txt adv_tools.txt adv_txgain.txt"
+
+for file in $files; do
+sudo wget -O /var/lib/dvswitch/dvs/adv/user00EN/$file https://raw.githubusercontent.com/hl5btf/DVSMU/main/EN/$file > /dev/null 2>&1
+sudo wget -O /var/lib/dvswitch/dvs/adv/user00KR/$file https://raw.githubusercontent.com/hl5btf/DVSMU/main/KR/$file > /dev/null 2>&1
+done
+}
+
+#====== download_and_update_apps =============================================
+function download_and_update_apps() {
+
+files="dvsmu man_log DMRIds_chk.sh bm_watchdog.sh config_main_user.sh"
+
+for file in $files; do
+sudo wget -O /usr/local/dvs/$file https://raw.githubusercontent.com/hl5btf/DVSMU/main/$file
+sudo chmod +x /usr/local/dvs/$file
+done
+
+# 필요시 아래와 같이 다운로드 가능
+# sudo wget -O /usr/local/dvs/dvsmu https://raw.githubusercontent.com/hl5btf/DVSMU/main/dvsmu
+# sudo wget -O /usr/local/dvs/man_log https://raw.githubusercontent.com/hl5btf/DVSMU/main/man_log
+# sudo wget -O /usr/local/dvs/DMRIds_chk.sh https://raw.githubusercontent.com/hl5btf/DVSMU/main/DMRIds_chk.sh
+}
+
+
+#====== set_crontab =============================================
+function set_crontab() {
+
+FILE_CRON=/etc/crontab
+
+# <<<crontab에서 daily가 있는 줄의 내용 : 25 6    * * *   root    test -x /usr/sbin/anacron || ( cd / && run-parts --report /etc/cron.daily )>>>
+
+cron_daily_time=$(sed -n -e '/cron.daily/p' $FILE_CRON | cut -f 2 -d' ')
+cron_daily_time=$(echo $cron_daily_time | cut -f1 -d' ')
+cron_daily_min=$(sed -n -e '/cron.daily/p' $FILE_CRON | cut -f 1 -d' ')
+cron_daily_min_plus_3=$((cron_daily_min + 3))
+cron_daily_min_plus_4=$((cron_daily_min + 4))
+
+if ! sudo grep -q "time=" "$FILE_CRON"; then
+    echo "#time=3" | sudo tee -a $FILE_CRON
 fi
-exit 0
 
-#--------------------------------------------------------
+if ! sudo grep -q "reboot=" "$FILE_CRON"; then
+    echo "#reboot=yes" | sudo tee -a $FILE_CRON
+fi
+
+if ! sudo grep -q "man_log" "$FILE_CRON"; then
+    echo "0 3 * * * root /usr/local/dvs/man_log" | sudo tee -a $FILE_CRON
+fi
+
+if ! sudo grep -q "DMRIds" "$FILE_CRON"; then
+    echo "$cron_daily_min_plus_3 $cron_daily_time * * * root /usr/local/dvs/DMRIds_chk.sh" | sudo tee -a $FILE_CRON
+fi
+
+if ! sudo grep -q "bm_watchdog" "$FILE_CRON"; then
+    echo "*/5 * * * * root /usr/local/dvs/bm_watchdog.sh" | sudo tee -a $FILE_CRON
+fi
+}
+
+#====== add_variables =============================================
+function add_variables() {
+#sudo wget -O /var/lib/dvswitch/dvs/var00.txt https://raw.githubusercontent.com/hl5btf/DVSMU/main/var00.txt > /dev/null 2>&1
+# 기존에 있는 변수는 값을 변경하지 않는다. (사용자가 변경한 값을 유지하도록)
+# 기존에 있는 변수의 값을 변경하려면 update_var 을 사용해야 한다.
+# each item needs space in between. if the item is character, it needs quotation marks.
+
+new_var="txgain_asl txgain_stfu txgain_intercom original_bm_address"
+
+new_val=(0.35 0.35 0.35 "")
+
+function do_add() {
+for var in ${new_var}; do
+        if [[ -z `sudo grep "^$var" $file` ]]; then
+                echo "$var=" | sudo tee -a $file > /dev/null 2>&1
+                val=${new_val[$n]}
+                sudo sed -i -e "/^$var=/ c $var=$val" $file
+    fi
+        n=$(($n+1))
+done
+}
+
+file=/var/lib/dvswitch/dvs/var.txt
+    do_add; n=0
+
+file=/var/lib/dvswitch/dvs/var00.txt
+    do_add; n=0
+
+for user in "${user_array[@]}"; do
+source /var/lib/dvswitch/dvs/var${user}.txt > /dev/null 2>&1
+if [ -e /var/lib/dvswitch/dvs/var${user}.txt ] && [ x${call_sign} != x ]; then
+    file=/var/lib/dvswitch/dvs/var${user}.txt
+    do_add; n=0
+fi
+done
+}
+
+#=======================
+# MAIN SCRIPT
+#=======================
+(
+installation_apps
+set_path
+set_alias
+copy_files_for_userXX
+
+# 아래 3개는 Github hl5btf/DVSMU/upgrade.sh와 동일 (수정시 동일하게 수정해야 함)
+download_and_update_apps
+set_crontab
+add_variables
+) > /dev/null 2>&1 &
+
+echo -n "please wait about 5 min "
+while kill -0 $! 2>/dev/null; do
+    echo -n "."
+    sleep 1
+done
+
+echo -e "\ndone"
+echo
+echo "reboot"
+
+sudo rm setup > /dev/null 2>&1
+
+sudo reboot
+exit 0
