@@ -158,7 +158,7 @@ new_val=(0.35 0.35 0.35 "")
 
 function do_add() {
 for var in ${new_var}; do
-        if [[ -z `sudo grep "^$var" $file` ]]; then
+    if ! sudo grep -q "^$var" "$file"; then        
                 echo "$var=" | sudo tee -a $file > /dev/null 2>&1
                 val=${new_val[$n]}
                 sudo sed -i -e "/^$var=/ c $var=$val" $file
