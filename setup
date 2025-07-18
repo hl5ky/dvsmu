@@ -197,7 +197,7 @@ set_crontab
 add_variables
 ) > /dev/null 2>&1 &
 
-echo -n "please wait about 5 min "
+echo -n "약 5분 소요됨. 완료되면 자동 리부팅됨. "
 while kill -0 $! 2>/dev/null; do
     echo -n "."
     sleep 1
