@@ -15,6 +15,7 @@
   - 시스템 최적화를 통해서 보다 안정된 시스템을 만들 수 있다.
 #
 ### 설치 방법:
+    ( setup을 실행하면 dvswtich-server도 함께 설치됨)
   - sudo wget https://github.com/hl5ky/dvsmu/raw/main/setup
   - sudo chmod +x setup
   - sudo ./setup
