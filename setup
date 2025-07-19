@@ -7,9 +7,13 @@ user_array=(01 02 03 04 05 06 07 08 09 10 11 12 13 14 15 16 17 18 19 20 21 22 23
 #====== installation_apps =============================================
 function installation_apps() {
 
-sudo apt-get update > /dev/null 2>&1
-
-sudo apt-get install dvswitch-server -y > /dev/null 2>&1
+sudo apt update -y && sudo apt upgrade -y
+cd /tmp
+wget http://dvswitch.org/buster
+sudo chmod +x buster
+sudo ./buster
+sudo apt-get update
+sudo apt-get install dvswitch-server -y
 
 sudo apt-get install multitail -y > /dev/null 2>&1
 
