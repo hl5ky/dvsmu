@@ -12,7 +12,7 @@ cd /tmp
 wget http://dvswitch.org/buster
 sudo chmod +x buster
 sudo ./buster
-sudo apt-get update
+sudo apt-get update -y
 sudo apt-get install dvswitch-server -y
 
 sudo apt-get install multitail -y >
