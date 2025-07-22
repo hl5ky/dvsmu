@@ -79,21 +79,24 @@ sudo rm $file
 #====== copy_files_for_userXX =============================================
 function copy_files_for_userXX() {
 
-files="analog_bridge00.service mmdvm_bridge00.service md380-emu00.service"
+files="analog_bridge00.service md380-emu00.service mmdvm_bridge00.service var00.txt"
 
+dir=/var/lib/dvswitch/dvs
 for file in $files; do
-sudo wget -O /var/lib/dvswitch/dvs/$file https://raw.githubusercontent.com/hl5btf/DVSMU/main/$file > /dev/null 2>&1
-sudo chmod +x /var/lib/dvswitch/dvs/$file
+sudo wget -O ${dir}/$file https://raw.githubusercontent.com/hl5btf/DVSMU/main/$file > /dev/null 2>&1
+sudo chmod +x ${dir}/$file
 done
 
-sudo wget -O /var/lib/dvswitch/dvs/var00.txt https://raw.githubusercontent.com/hl5btf/DVSMU/main/var00.txt > /dev/null 2>&1
 
-sudo mkdir /var/lib/dvswitch/dvs/adv/user00 > /dev/null 2>&1
-sudo wget -O /var/lib/dvswitch/dvs/adv/user00/dvsm.macro https://raw.githubusercontent.com/hl5btf/DVSMU/main/dvsm.macro > /dev/null 2>&1
-sudo wget -O /var/lib/dvswitch/dvs/adv/user00/dvsm.adv https://raw.githubusercontent.com/hl5btf/DVSMU/main/dvsm.adv > /dev/null 2>&1
-sudo wget -O /var/lib/dvswitch/dvs/adv/user00/dvsm.basic https://raw.githubusercontent.com/hl5btf/DVSMU/main/dvsm.basic > /dev/null 2>&1
-sudo wget -O /var/lib/dvswitch/dvs/adv/user00/dvsm.sh https://raw.githubusercontent.com/hl5btf/DVSMU/main/dvsm.sh > /dev/null 2>&1
-sudo chmod +x /var/lib/dvswitch/dvs/adv/user00/dvsm.sh
+sudo mkdir /var/lib/dvswitch/dvs/adv/user00
+files="dvsm.adv dvsm.basic dvsm.macro dvsm.sh"
+
+dir=/var/lib/dvswitch/dvs/adv/user00
+for file in $files; do
+sudo wget -O ${dir}/$file https://raw.githubusercontent.com/hl5btf/DVSMU/main/$file > /dev/null 2>&1
+sudo chmod +x ${dir}/$file
+done
+
 
 sudo mkdir /var/lib/dvswitch/dvs/adv/user00EN > /dev/null 2>&1
 sudo mkdir /var/lib/dvswitch/dvs/adv/user00KR > /dev/null 2>&1
