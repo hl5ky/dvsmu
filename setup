@@ -69,7 +69,7 @@ echo "$new_export_line" | sudo tee -a "$file" > /dev/null
 function set_alias() {
 
 file=add_aliases.sh
-sudo wget https://raw.githubusercontent.com/hl5btf/DVSwitch/main/$file > /dev/null
+sudo wget https://raw.githubusercontent.com/hl5btf/DVSwitch/main/$file
 sudo chmod +x $file
 sudo ./$file
 
@@ -83,7 +83,7 @@ files="analog_bridge00.service md380-emu00.service mmdvm_bridge00.service var00.
 
 dir=/var/lib/dvswitch/dvs
 for file in $files; do
-sudo wget -O ${dir}/$file https://raw.githubusercontent.com/hl5btf/DVSMU/main/$file > /dev/null 2>&1
+sudo wget -O ${dir}/$file https://raw.githubusercontent.com/hl5btf/DVSMU/main/$file
 sudo chmod +x ${dir}/$file
 done
 
@@ -93,19 +93,19 @@ files="dvsm.adv dvsm.basic dvsm.macro dvsm.sh"
 
 dir=/var/lib/dvswitch/dvs/adv/user00
 for file in $files; do
-sudo wget -O ${dir}/$file https://raw.githubusercontent.com/hl5btf/DVSMU/main/$file > /dev/null 2>&1
+sudo wget -O ${dir}/$file https://raw.githubusercontent.com/hl5btf/DVSMU/main/$file
 sudo chmod +x ${dir}/$file
 done
 
 
-sudo mkdir /var/lib/dvswitch/dvs/adv/user00EN > /dev/null 2>&1
-sudo mkdir /var/lib/dvswitch/dvs/adv/user00KR > /dev/null 2>&1
+sudo mkdir /var/lib/dvswitch/dvs/adv/user00EN
+sudo mkdir /var/lib/dvswitch/dvs/adv/user00KR
 
 files="adv_audio.txt adv_dmr.txt adv_hotspot.txt adv_main.txt adv_managetg.txt adv_resetfvrt.txt adv_rxgain.txt adv_tgref.txt adv_tools.txt adv_txgain.txt"
 
 for file in $files; do
-sudo wget -O /var/lib/dvswitch/dvs/adv/user00EN/$file https://raw.githubusercontent.com/hl5btf/DVSMU/main/EN/$file > /dev/null 2>&1
-sudo wget -O /var/lib/dvswitch/dvs/adv/user00KR/$file https://raw.githubusercontent.com/hl5btf/DVSMU/main/KR/$file > /dev/null 2>&1
+sudo wget -O /var/lib/dvswitch/dvs/adv/user00EN/$file https://raw.githubusercontent.com/hl5btf/DVSMU/main/EN/$file
+sudo wget -O /var/lib/dvswitch/dvs/adv/user00KR/$file https://raw.githubusercontent.com/hl5btf/DVSMU/main/KR/$file
 done
 }
 
@@ -154,7 +154,7 @@ fi
 
 #====== add_variables =============================================
 function add_variables() {
-#sudo wget -O /var/lib/dvswitch/dvs/var00.txt https://raw.githubusercontent.com/hl5btf/DVSMU/main/var00.txt > /dev/null 2>&1
+#sudo wget -O /var/lib/dvswitch/dvs/var00.txt https://raw.githubusercontent.com/hl5btf/DVSMU/main/var00.txt
 # 기존에 있는 변수는 값을 변경하지 않는다. (사용자가 변경한 값을 유지하도록)
 # 기존에 있는 변수의 값을 변경하려면 update_var 을 사용해야 한다.
 # each item needs space in between. if the item is character, it needs quotation marks.
@@ -166,7 +166,7 @@ new_val=(0.35 0.35 0.35 "")
 function do_add() {
 for var in ${new_var}; do
     if ! sudo grep -q "^$var" "$file"; then        
-                echo "$var=" | sudo tee -a $file > /dev/null 2>&1
+                echo "$var=" | sudo tee -a $file
                 val=${new_val[$n]}
                 sudo sed -i -e "/^$var=/ c $var=$val" $file
     fi
@@ -181,7 +181,7 @@ file=/var/lib/dvswitch/dvs/var00.txt
     do_add; n=0
 
 for user in "${user_array[@]}"; do
-source /var/lib/dvswitch/dvs/var${user}.txt > /dev/null 2>&1
+source /var/lib/dvswitch/dvs/var${user}.txt
 if [ -e /var/lib/dvswitch/dvs/var${user}.txt ] && [ x${call_sign} != x ]; then
     file=/var/lib/dvswitch/dvs/var${user}.txt
     do_add; n=0
@@ -214,7 +214,7 @@ echo -e "\ndone"
 echo
 echo "reboot"
 
-sudo rm setup > /dev/null 2>&1
+sudo rm setup
 
 sudo reboot
 exit 0
