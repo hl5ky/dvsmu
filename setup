@@ -126,6 +126,51 @@ sudo wget -O /var/lib/dvswitch/dvs/adv/user00KR/$file https://raw.githubusercont
 done
 }
 
+#====== change_freq_of_all_users =============================================
+function change_freq_of_all_users() {
+
+# 주파수가 00000 일 경우에만, 430으로 수정
+
+source /var/lib/dvswitch/dvs/var.txt > /dev/null 2>&1
+    file=/var/lib/dvswitch/dvs/var.txt
+    tag=rx_freq; value=430000000
+    sudo sed -i -e "/^$tag=/ c $tag=$value" $file
+    tag=tx_freq; value=430000000
+    sudo sed -i -e "/^$tag=/ c $tag=$value" $file
+
+source /var/lib/dvswitch/dvs/var00.txt > /dev/null 2>&1
+    file=/var/lib/dvswitch/dvs/var00.txt
+    tag=rx_freq; value=430000000
+    sudo sed -i -e "/^$tag=/ c $tag=$value" $file
+    tag=tx_freq; value=430000000
+    sudo sed -i -e "/^$tag=/ c $tag=$value" $file
+
+source /opt/MMDVM_Bridge/MMDVM_Bridge.ini > /dev/null 2>&1
+    file=/opt/MMDVM_Bridge/MMDVM_Bridge.ini
+    section=Info; tag=RXFrequency; value=430000000
+    $update_ini $file $section $tag $value
+    section=Info; tag=TXFrequency; value=430000000
+    $update_ini $file $section $tag $value
+
+for user in "${user_array[@]}"; do
+if [ -e /var/lib/dvswitch/dvs/var${user}.txt ] && [ x${call_sign} != x ]; then
+    source /var/lib/dvswitch/dvs/var${user}.txt > /dev/null 2>&1
+        file=/var/lib/dvswitch/dvs/var${user}.txt
+        tag=rx_freq; value=430000000
+        sudo sed -i -e "/^$tag=/ c $tag=$value" $file
+        tag=tx_freq; value=430000000
+        sudo sed -i -e "/^$tag=/ c $tag=$value" $file
+
+    source /opt/user${user}/MMDVM_Bridge.ini > /dev/null 2>&1
+        file=/opt/user${user}/MMDVM_Bridge.ini
+        section=Info; tag=RXFrequency; value=430000000
+        $update_ini $file $section $tag $value
+        section=Info; tag=TXFrequency; value=430000000
+        $update_ini $file $section $tag $value
+fi
+done
+}
+
 #====== download_and_update_apps =============================================
 function download_and_update_apps() {
 
@@ -216,6 +261,7 @@ set_alias
 copy_files_for_userXX
 
 # 아래 3개는 Github hl5btf/DVSMU/upgrade.sh와 동일 (수정시 동일하게 수정해야 함)
+replace_freq_of_all_users
 download_and_update_apps
 set_crontab
 add_variables
