@@ -15,9 +15,9 @@ sudo ./buster
 sudo apt-get update
 sudo apt-get install dvswitch-server -y
 
-sudo apt-get install multitail -y > /dev/null 2>&1
+sudo apt-get install multitail -y >
 
-sudo apt install htop -y  > /dev/null 2>&1
+sudo apt install htop -y
 }
 
 
