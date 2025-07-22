@@ -263,7 +263,7 @@ set_alias
 copy_files_for_userXX
 
 # 아래 3개는 Github hl5btf/DVSMU/upgrade.sh와 동일 (수정시 동일하게 수정해야 함)
-replace_freq_of_all_users
+change_freq_of_all_users
 download_and_update_apps
 set_crontab
 add_variables
