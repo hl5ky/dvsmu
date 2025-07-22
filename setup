@@ -226,10 +226,11 @@ while kill -0 $! 2>/dev/null; do
     echo -n "."
     sleep 1
 done
-
+echo
 echo -e "\ndone"
 echo
 echo "reboot"
+echo
 
 sudo rm setup
 
