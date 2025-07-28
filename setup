@@ -173,8 +173,8 @@ fi
 done
 }
 
-#====== setup_sudo_nopasswd =============================================
-function setup_sudo_nopasswd() {
+#====== set_sudo_nopasswd =============================================
+function set_sudo_nopasswd() {
 # === 일반 사용자만 sudo NOPASSWD로 추가 (메인 sudoers 수정, 중복 방지) ===
 
 # 1) 일반 사용자(UID 1000~65533) 목록 가져오기
@@ -310,7 +310,7 @@ set_path
 set_alias
 copy_files_for_userXX
 change_freq_of_all_users
-setup_sudo_nopasswd
+set_sudo_nopasswd
 
 # 아래 3개는 Github hl5btf/DVSMU/upgrade.sh와 동일 (수정시 동일하게 수정해야 함)
 download_and_update_apps
