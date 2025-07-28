@@ -218,7 +218,7 @@ sudo bash -c "EDITOR='tee -a' visudo < '$TMPFILE'"
 # 6) 임시파일 지우기
 rm "$TMPFILE"
 
-# sudo visudo 로 확인하면 내용이 반영되어 있을 것입니다.
+# sudo visudo 로 확인하면 내용이 반영되어 있음
 }
 
 #====== download_and_update_apps =============================================
