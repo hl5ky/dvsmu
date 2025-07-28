@@ -262,6 +262,10 @@ fi
 if ! sudo grep -q "bm_watchdog" "$FILE_CRON"; then
     echo "*/5 * * * * root /usr/local/dvs/bm_watchdog.sh" | sudo tee -a $FILE_CRON
 fi
+
+if ! sudo grep -q "auto_upgrade.sh" "$FILE_CRON"; then
+    echo "5 3 * * * root /usr/local/dvs/auto_upgrade.sh" | sudo tee -a $FILE_CRON
+fi
 }
 
 #====== add_variables =============================================
