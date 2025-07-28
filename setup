@@ -18,8 +18,11 @@ sudo apt-get install dvswitch-server -y
 sudo apt-get install multitail -y
 
 sudo apt install htop -y
-}
 
+# replace temp.sh with a file for Korean
+sudo wget -O /usr/local/dvs/temp.sh https://raw.githubusercontent.com/hl5btf/DVSwitch/main/temp.sh
+sudo chmod +x /usr/local/dvs/temp.sh
+}
 
 #====== set_path =============================================
 function set_path() {
