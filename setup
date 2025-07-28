@@ -224,7 +224,7 @@ rm "$TMPFILE"
 #====== download_and_update_apps =============================================
 function download_and_update_apps() {
 
-files="dvsmu man_log DMRIds_chk.sh bm_watchdog.sh config_main_user.sh"
+files="dvsmu man_log DMRIds_chk.sh bm_watchdog.sh config_main_user.sh auto_upgrade.sh"
 
 for file in $files; do
 sudo wget -O /usr/local/dvs/$file https://raw.githubusercontent.com/hl5btf/DVSMU/main/$file
