@@ -311,7 +311,6 @@ done
 #=======================
 # MAIN SCRIPT
 #=======================
-(
 installation_apps
 set_path
 set_alias
@@ -323,20 +322,5 @@ set_sudo_nopasswd
 download_and_update_apps
 set_crontab
 add_variables
-) > /dev/null 2>&1 &
 
-echo -n "약 5분 소요됨. 완료되면 자동 리부팅됨. "
-while kill -0 $! 2>/dev/null; do
-    echo -n "."
-    sleep 1
-done
-echo
-echo -e "\ndone"
-echo
-echo "reboot"
-echo
-
-sudo rm setup
-
-sudo reboot
 exit 0
