@@ -243,32 +243,35 @@ done
 
 #====== set_crontab =============================================
 function set_crontab() {
-
 FILE_CRON=/etc/crontab
 
-if ! sudo grep -q "time=" "$FILE_CRON"; then
-    echo "#time=3" | sudo tee -a $FILE_CRON
+value_time=$(grep -oP 'time=\K[^#\s]+' "$FILE_CRON")
+
+if grep -q "reboot" "$FILE_CRON"; then
+        value_reboot=$(grep -oP 'reboot=\K[^#\s]+' "$FILE_CRON")
 fi
 
-if ! sudo grep -q "reboot=" "$FILE_CRON"; then
-    echo "#reboot=yes" | sudo tee -a $FILE_CRON
+
+sudo sed -i '/time/d' "$FILE_CRON"
+sudo sed -i '/reboot/d' "$FILE_CRON"
+sudo sed -i '/man_log/d' "$FILE_CRON"
+sudo sed -i '/DMRIds_chk.sh/d' "$FILE_CRON"
+sudo sed -i '/bm_watchdog.sh/d' "$FILE_CRON"
+sudo sed -i '/auto_upgrade.sh/d' "$FILE_CRON"
+
+
+echo "#time=$value_time" | sudo tee -a $FILE_CRON
+
+if [ "$value_reboot" = "yes" ]; then
+        echo "#reboot=yes" | sudo tee -a $FILE_CRON
+else
+        echo "#reboot=no" | sudo tee -a $FILE_CRON
 fi
 
-if ! sudo grep -q "man_log" "$FILE_CRON"; then
-    echo "0 3 * * * root /usr/local/dvs/man_log" | sudo tee -a $FILE_CRON
-fi
-
-if ! sudo grep -q "DMRIds" "$FILE_CRON"; then
-    echo "28 6 * * * root /usr/local/dvs/DMRIds_chk.sh" | sudo tee -a $FILE_CRON
-fi
-
-if ! sudo grep -q "bm_watchdog" "$FILE_CRON"; then
-    echo "*/5 * * * * root /usr/local/dvs/bm_watchdog.sh" | sudo tee -a $FILE_CRON
-fi
-
-if ! sudo grep -q "auto_upgrade.sh" "$FILE_CRON"; then
-    echo "5 3 * * * root /usr/local/dvs/auto_upgrade.sh" | sudo tee -a $FILE_CRON
-fi
+echo "0 $value_time * * * root /usr/local/dvs/man_log" | sudo tee -a $FILE_CRON
+echo "28 6 * * * root /usr/local/dvs/DMRIds_chk.sh" | sudo tee -a $FILE_CRON
+echo "*/5 * * * * root /usr/local/dvs/bm_watchdog.sh" | sudo tee -a $FILE_CRON
+echo "3 3 * * * root /usr/local/dvs/auto_upgrade.sh" | sudo tee -a $FILE_CRON
 }
 
 #====== add_variables =============================================
