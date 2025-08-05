@@ -183,7 +183,7 @@ USERS=$(awk -F: '$3>=1000 && $3<65534 {print $1}' /etc/passwd)
 
 #  사용자 계정을 찾지 못했다면
 if [ -z "$USERS" ]; then
-    exit 1
+    return 1
 fi
 
 # 2) sudoers 백업
@@ -202,7 +202,7 @@ done
 
 # 신규 추가 대상이 없으면 종료
 if [ -z "$NEED_ADD" ]; then
-    exit 0
+    return 0
 fi
 
 # 4) 메인 sudoers에 추가할 내용 준비
