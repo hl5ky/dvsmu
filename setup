@@ -118,7 +118,8 @@ ls /usr/bin/qemu-arm-static
 }
 #===================================================
 function run_buster() {
-    echo ">>> Running buster()"
+	echo
+	echo ">>> Running buster()"
 	sudo apt update -y
 	cd /tmp
 	wget http://dvswitch.org/buster
@@ -128,8 +129,9 @@ function run_buster() {
 }
 #===================================================
 function run_bookworm() {
-    echo ">>> Running bookworm()"
-    sudo apt update -y && sudo apt upgrade -y
+	echo
+	echo ">>> Running bookworm()"
+	sudo apt update -y
 	cd /tmp
 	wget http://dvswitch.org/bookworm
 	chmod +x bookworm
@@ -146,6 +148,9 @@ function check_ARCHITECTURE() {
 # 2-2. arm64이고 debian 12 이상이 아니면 buster
 # 3-1. amd64이고 버전이 22.04이상이면 bookworm
 # 3-2. amd64이고 버전이 22.04이상이 아니면 buster
+
+echo
+echo ">>> architecture 확인"
 
 # 아키텍처 정보
 ARCH_DPKG=$(dpkg --print-architecture)   # 예: armhf, arm64, amd64
@@ -164,31 +169,36 @@ version_ge() {
 #-------------------------
 # 아키텍처 및 배포판 기반 분기
 if [[ "$ARCH_DPKG" == "armhf" || "$ARCH_UNAME" == "armv7l" ]]; then
-    # 32비트 ARM 시스템
+    echo "32비트 ARM 시스템"
     return 0 #run_buster
 
 elif [[ "$ARCH_DPKG" == "arm64" || "$ARCH_UNAME" == "aarch64" ]]; then
-    # 64비트 ARM 시스템
+    echo "64비트 ARM 시스템"
 	if [[ "$OS_ID" == "debian" || "$OS_ID" == "raspbian" ]]; then
     	if [ "$MAJOR_VERSION" -ge 12 ]; then
-        	return 1 #run_bookworm
+        	echo "debian 12 이상 - bookworm 설치"
+		return 1 #run_bookworm
     	else
-        	return 0 #run_buster
+        	echo "debian 12 미만 - buster 설치"
+		return 0 #run_buster
     	fi
 	fi
 
 elif [[ "$ARCH_DPKG" == "amd64" || "$ARCH_UNAME" == "x86_64" ]]; then
-    # 64비트 PC 시스템
+    echo "64비트 PC 시스템"
     if [[ "$OS_ID" == "ubuntu" ]] && version_ge "$OS_VERSION" "22.04"; then
-        return 1
+	echo "ubuntu 22.04 이상 - bookworm 설치"
+	return 1
     else
-        return 0
+        echo "ubuntu 22.04 미만 - buster 설치"
+	return 0
     fi
 fi
 }
 #===================================================
 function check_dvswitch() {
-# dvswitch-server 의 설치가 되었는지 확인
+echo
+echo ">>> dvswitch-server 의 설치가 되었는지 확인"
 if dpkg -l | grep -q "^ii  dvswitch-server"; then
         return 0 # yes
 else
@@ -506,6 +516,7 @@ if [ "$rtn1" -eq 0 ]; then
         echo "dvswitch-server가 설치되어 있음"
 	rtn2=999
 elif [ "$rtn1" -eq 1 ]; then
+        echo "dvswitch-server가 설치되어 있지 않음"
         check_ARCHITECTURE
         rtn2=$?
 fi
