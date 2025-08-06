@@ -179,7 +179,7 @@ elif [[ "$ARCH_DPKG" == "arm64" || "$ARCH_UNAME" == "aarch64" ]]; then
 
 elif [[ "$ARCH_DPKG" == "amd64" || "$ARCH_UNAME" == "x86_64" ]]; then
     # 64비트 PC 시스템
-    if [[ "$OS_ID" == "ubuntu" && version_ge "$OS_VERSION" "22.04" ]]; then
+    if [[ "$OS_ID" == "ubuntu" ]] && version_ge "$OS_VERSION" "22.04"; then
         return 1
     else
         return 0
