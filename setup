@@ -223,7 +223,7 @@ sudo chmod +x /usr/local/dvs/temp.sh
 
 #====== set_path =============================================
 function set_path() {
-echo ">>> set path
+echo ">>> set path"
 file="/etc/profile"
 
 # 추가할 디렉토리 목록
