@@ -4,7 +4,9 @@ user_array=(01 02 03 04 05 06 07 08 09 10 11 12 13 14 15 16 17 18 19 20 21 22 23
 
 #===================================================
 function check_qemu_version() {
-    if ! command -v qemu-arm-static > /dev/null 2>&1; then
+	echo
+	echo ">>> qemu-arm-static 버전 확인"
+	if ! command -v qemu-arm-static > /dev/null 2>&1; then
         echo "qemu-arm-static 명령을 찾을 수 없습니다"
         return 2  # 명령 없음
     fi
@@ -80,6 +82,7 @@ sudo apt purge -y qemu-user-static
 sudo apt autoremove -y
 
 # Step 3. 아키텍처별 설치 파일 설정
+echo ">>> architecture별 qemu 팩케지 준비"
 QEMU_DEB_URL=""
 if [[ "$ARCH_DPKG" == "armhf" || "$ARCH_UNAME" == "armv7l" ]]; then
     QEMU_DEB_URL="https://snapshot.debian.org/archive/debian/20220307T144557Z/pool/main/q/qemu/qemu-user-static_6.2+dfsg-2_armhf.deb"
@@ -207,7 +210,8 @@ fi
 }
 #====== installation_apps =============================================
 function installation_apps() {
-
+echo
+echo ">>> multitail, htop 설치"
 sudo apt-get install multitail -y
 
 sudo apt install htop -y
@@ -219,7 +223,7 @@ sudo chmod +x /usr/local/dvs/temp.sh
 
 #====== set_path =============================================
 function set_path() {
-
+echo ">>> set path
 file="/etc/profile"
 
 # 추가할 디렉토리 목록
@@ -263,7 +267,7 @@ echo "$new_export_line" | sudo tee -a "$file" > /dev/null
 
 #====== set_alias =============================================
 function set_alias() {
-
+echo ">>> set alias"
 BASHRC="/etc/bash.bashrc"
 
 # 추가할 alias 목록
@@ -291,7 +295,7 @@ done <<< "$ALIASES"
 
 #====== copy_files_for_userXX =============================================
 function copy_files_for_userXX() {
-
+echo ">>> copy files for userXX"
 files="analog_bridge00.service md380-emu00.service mmdvm_bridge00.service var00.txt"
 
 dir=/var/lib/dvswitch/dvs
@@ -324,7 +328,7 @@ done
 
 #====== change_freq_of_all_users =============================================
 function change_freq_of_all_users() {
-
+echo ">>> change freq of all users"
 # 주파수가 00000 일 경우에만, 430으로 수정
 
 source /var/lib/dvswitch/dvs/var.txt > /dev/null 2>&1
@@ -371,6 +375,7 @@ done
 
 #====== set_sudo_nopasswd =============================================
 function set_sudo_nopasswd() {
+echo ">>> set sudo nopasswd"
 # === 일반 사용자만 sudo NOPASSWD로 추가 (메인 sudoers 수정, 중복 방지) ===
 
 # 1) 일반 사용자(UID 1000~65533) 목록 가져오기
@@ -419,7 +424,7 @@ rm "$TMPFILE"
 
 #====== download_and_update_apps =============================================
 function download_and_update_apps() {
-
+echo ">>> download apps (dvsmu man_log DMRIds_chk.sh bm_watchdog.sh config_main_user.sh auto_upgrade.sh)"
 files="dvsmu man_log DMRIds_chk.sh bm_watchdog.sh config_main_user.sh auto_upgrade.sh"
 
 for file in $files; do
@@ -436,6 +441,7 @@ done
 
 #====== set_crontab =============================================
 function set_crontab() {
+echo ">>> set crontab"
 FILE_CRON=/etc/crontab
 
 value_time=$(grep -oP 'time=\K[^#\s]+' "$FILE_CRON")
@@ -469,6 +475,7 @@ echo "3 3 * * * root flock -n /var/lock/auto_upgrade.lock /usr/local/dvs/auto_up
 
 #====== add_variables =============================================
 function add_variables() {
+echo ">>> add variables"
 #sudo wget -O /var/lib/dvswitch/dvs/var00.txt https://raw.githubusercontent.com/hl5btf/DVSMU/main/var00.txt
 # 기존에 있는 변수는 값을 변경하지 않는다. (사용자가 변경한 값을 유지하도록)
 # 기존에 있는 변수의 값을 변경하려면 update_var 을 사용해야 한다.
