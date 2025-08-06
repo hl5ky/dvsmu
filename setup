@@ -119,7 +119,7 @@ ls /usr/bin/qemu-arm-static
 #===================================================
 function run_buster() {
     echo ">>> Running buster()"
-	sudo apt update -y && sudo apt upgrade -y
+	sudo apt update -y
 	cd /tmp
 	wget http://dvswitch.org/buster
 	chmod +x buster
