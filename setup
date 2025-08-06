@@ -504,14 +504,14 @@ rtn1=$?
 # --- 설치되지 않았으면 장치의 아키텍쳐 확인 - 설치 준비
 if [ "$rtn1" -eq 0 ]; then
         echo "dvswitch-server가 설치되어 있음"
-else
+elif [ "$rtn1" -eq 1 ]; then
         check_ARCHITECTURE
         rtn2=$?
 fi
 # --- 아키텍쳐에 맞게 dvswitch-server 설치
 if [ "$rtn2" -eq 0 ]; then
         run_buster
-else
+elif [ "$rtn2" -eq 1 ]; then
         run_bookworm
 fi
 # --- qemu-arm-static 버전 확인
