@@ -4,7 +4,7 @@ user_array=(01 02 03 04 05 06 07 08 09 10 11 12 13 14 15 16 17 18 19 20 21 22 23
 
 #===================================================
 function check_qemu_version() {
-	echo
+	echo "========================="
 	echo ">>> qemu-arm-static 버전 확인"
 	if ! command -v qemu-arm-static > /dev/null 2>&1; then
         echo "qemu-arm-static 명령을 찾을 수 없습니다"
@@ -121,7 +121,7 @@ ls /usr/bin/qemu-arm-static
 }
 #===================================================
 function run_buster() {
-	echo
+	echo "========================="
 	echo ">>> Running buster()"
 	sudo apt update -y
 	cd /tmp
@@ -132,7 +132,7 @@ function run_buster() {
 }
 #===================================================
 function run_bookworm() {
-	echo
+	echo "========================="
 	echo ">>> Running bookworm()"
 	sudo apt update -y
 	cd /tmp
@@ -152,7 +152,7 @@ function check_ARCHITECTURE() {
 # 3-1. amd64이고 버전이 22.04이상이면 bookworm
 # 3-2. amd64이고 버전이 22.04이상이 아니면 buster
 
-echo
+echo "========================="
 echo ">>> architecture 확인"
 
 # 아키텍처 정보
@@ -200,7 +200,7 @@ fi
 }
 #===================================================
 function check_dvswitch() {
-echo
+echo "========================="
 echo ">>> dvswitch-server 의 설치가 되었는지 확인"
 if dpkg -l | grep -q "^ii  dvswitch-server"; then
         return 0 # yes
@@ -210,7 +210,7 @@ fi
 }
 #====== installation_apps =============================================
 function installation_apps() {
-echo
+echo "========================="
 echo ">>> multitail, htop 설치"
 sudo apt-get install multitail -y
 
@@ -223,6 +223,7 @@ sudo chmod +x /usr/local/dvs/temp.sh
 
 #====== set_path =============================================
 function set_path() {
+echo "========================="
 echo ">>> set path"
 file="/etc/profile"
 
@@ -267,6 +268,7 @@ echo "$new_export_line" | sudo tee -a "$file" > /dev/null
 
 #====== set_alias =============================================
 function set_alias() {
+echo "========================="
 echo ">>> set alias"
 BASHRC="/etc/bash.bashrc"
 
@@ -295,6 +297,7 @@ done <<< "$ALIASES"
 
 #====== copy_files_for_userXX =============================================
 function copy_files_for_userXX() {
+echo "========================="
 echo ">>> copy files for userXX"
 files="analog_bridge00.service md380-emu00.service mmdvm_bridge00.service var00.txt"
 
@@ -328,6 +331,7 @@ done
 
 #====== change_freq_of_all_users =============================================
 function change_freq_of_all_users() {
+echo "========================="
 echo ">>> change freq of all users"
 # 주파수가 00000 일 경우에만, 430으로 수정
 
@@ -375,6 +379,7 @@ done
 
 #====== set_sudo_nopasswd =============================================
 function set_sudo_nopasswd() {
+echo "========================="
 echo ">>> set sudo nopasswd"
 # === 일반 사용자만 sudo NOPASSWD로 추가 (메인 sudoers 수정, 중복 방지) ===
 
@@ -424,6 +429,7 @@ rm "$TMPFILE"
 
 #====== download_and_update_apps =============================================
 function download_and_update_apps() {
+echo "========================="
 echo ">>> download apps (dvsmu man_log DMRIds_chk.sh bm_watchdog.sh config_main_user.sh auto_upgrade.sh)"
 files="dvsmu man_log DMRIds_chk.sh bm_watchdog.sh config_main_user.sh auto_upgrade.sh"
 
@@ -441,6 +447,7 @@ done
 
 #====== set_crontab =============================================
 function set_crontab() {
+echo "========================="
 echo ">>> set crontab"
 FILE_CRON=/etc/crontab
 
@@ -475,6 +482,7 @@ echo "3 3 * * * root flock -n /var/lock/auto_upgrade.lock /usr/local/dvs/auto_up
 
 #====== add_variables =============================================
 function add_variables() {
+echo "========================="
 echo ">>> add variables"
 #sudo wget -O /var/lib/dvswitch/dvs/var00.txt https://raw.githubusercontent.com/hl5btf/DVSMU/main/var00.txt
 # 기존에 있는 변수는 값을 변경하지 않는다. (사용자가 변경한 값을 유지하도록)
