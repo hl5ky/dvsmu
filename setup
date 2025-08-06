@@ -563,19 +563,18 @@ set_crontab
 add_variables
 ) > /dev/null 2>&1 &
 
-echo -n "약 5분 소요됨. 완료되면 자동 리부팅됨. "
+echo -n "약 5분 소요됨. 완료되면 리부팅합니다. "
 while kill -0 $! 2>/dev/null; do
-    echo -n "."
+    echo -n "#"
     sleep 1
 done
 echo
-echo -e "\ndone"
+echo -e "\n설정이 완료되었습니다."
 echo
-echo "reboot"
-echo
-
 sudo rm setup
-
+echo "ENTER를 누르면 리부팅합니다."
+echo
+read
 sudo reboot
 exit 0
 
