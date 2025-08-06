@@ -17,6 +17,7 @@
 #
 ### 설치 방법:
     ( setup을 실행하면 dvswitch-server도 함께 설치됨)
+  - cd /tmp
   - sudo wget https://github.com/hl5ky/dvsmu/raw/main/setup
   - sudo chmod +x setup
   - sudo ./setup
