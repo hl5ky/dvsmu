@@ -140,6 +140,7 @@ function run_bookworm() {
 	chmod +x bookworm
 	sudo ./bookworm
 	sudo apt-get install dvswitch-server -y
+	sudo apt-get install md380-emu
 }
 #===================================================
 function check_ARCHITECTURE() {
