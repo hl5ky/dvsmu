@@ -461,6 +461,8 @@ FILE_CRON=/etc/crontab
 
 value_time=$(grep -oP 'time=\K[^#\s]+' "$FILE_CRON")
 
+if [ -z "$value_time" ]; then value_time=5; fi
+
 if grep -q "reboot" "$FILE_CRON"; then
         value_reboot=$(grep -oP 'reboot=\K[^#\s]+' "$FILE_CRON")
 fi
@@ -571,13 +573,14 @@ set_crontab
 add_variables
 ) > /dev/null 2>&1 &
 
-echo -n "약 5분 소요됨. 완료되면 리부팅합니다. "
+echo -n "약 5분 소요. 완료되면 리부팅합니다."
+echo -e "\n"
 while kill -0 $! 2>/dev/null; do
     echo -n "#"
     sleep 1
 done
-echo
-echo -e "\n설정이 완료되었습니다."
+echo -e "\n"
+echo "설정이 완료되었습니다."
 echo
 sudo rm setup
 echo "ENTER를 누르면 리부팅합니다."
