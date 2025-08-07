@@ -22,9 +22,11 @@ function check_qemu_version() {
     # 기준 버전과 비교
     base_version="6.2.0"
     if dpkg --compare-versions "$version_str" le "$base_version"; then
+	echo ">>> 버전 6.2.0 이하 -> 현 상태 유지"
         return 1  # 6.2.0 이하
     else
-        return 0  # 6.2.0 초과
+        echo ">>> 버전 $version_str -> 6.2.0으로 다운그레이드"
+	return 0  # 6.2.0 초과
     fi
 }
 
