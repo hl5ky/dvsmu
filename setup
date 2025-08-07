@@ -538,10 +538,10 @@ check_dvswitch
 rtn1=$?
 # --- 설치되지 않았으면 장치의 아키텍쳐 확인 - 설치 준비
 if [ "$rtn1" -eq 0 ]; then
-        echo "dvswitch-server가 설치되어 있음"
+        echo ">>> dvswitch-server가 설치되어 있음."
 	rtn2=999
 elif [ "$rtn1" -eq 1 ]; then
-        echo "dvswitch-server가 설치되어 있지 않음"
+        echo ">>> dvswitch-server가 설치되지 않았음."
         check_ARCHITECTURE
         rtn2=$?
 fi
