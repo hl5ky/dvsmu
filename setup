@@ -572,12 +572,13 @@ download_and_update_apps
 set_crontab
 add_variables
 ) > /dev/null 2>&1 &
+pid=$!
 
 echo
 echo -n "약 5분 소요. 완료되면 리부팅합니다."
 echo -e "\n"
 
-while kill -0 $! 2>/dev/null; do
+while kill -0 $pid 2>/dev/null; do
     echo -n "#"
     sleep 1
 done
