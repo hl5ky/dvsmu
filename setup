@@ -572,7 +572,7 @@ add_variables
 }
 
 #====== run_all_functions_with_progress_bar =============================================
-function run_all_functions_with_progress_bar()
+function run_all_functions_with_progress_bar() {
 (
 run_all_functions
 ) > /dev/null 2>&1 &
