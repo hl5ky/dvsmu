@@ -529,10 +529,8 @@ fi
 done
 }
 
-#=======================
-# MAIN SCRIPT
-#=======================
-(
+#====== run_all_functions =============================================
+function run_all_functions() {
 # --- dvswitch-server가 설치되었는지 확인
 check_dvswitch
 rtn1=$?
@@ -571,6 +569,12 @@ set_sudo_nopasswd
 download_and_update_apps
 set_crontab
 add_variables
+}
+
+#====== run_all_functions_with_progress_bar =============================================
+function run_all_functions_with_progress_bar()
+(
+run_all_functions
 ) > /dev/null 2>&1 &
 pid=$!
 
@@ -582,6 +586,16 @@ while kill -0 $pid 2>/dev/null; do
     echo -n "#"
     sleep 1
 done
+}
+
+#==================================================
+# MAIN SCRIPT
+#==================================================
+if [ -z "$1" ]; then
+	run_all_functions_with_progress_bar
+else
+	run_all_functions
+fi
 
 echo -e "\n"
 echo "설정이 완료되었습니다."
