@@ -132,7 +132,7 @@ function run_buster() {
 	sudo ./buster
 	sudo apt-get install dvswitch-server -y
 	if [ ! -f /opt/md380-emu/md380-emu ]; then
-		apt-get install md380-emu
+		sudo apt-get install md380-emu
 	fi
 }
 #===================================================
@@ -146,7 +146,7 @@ function run_bookworm() {
 	sudo ./bookworm
 	sudo apt-get install dvswitch-server -y
 	if [ ! -f /opt/md380-emu/md380-emu ]; then
-		apt-get install md380-emu
+		sudo apt-get install md380-emu
 	fi
 }
 #===================================================
