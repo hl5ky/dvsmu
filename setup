@@ -132,6 +132,7 @@ function run_buster() {
 	sudo ./buster
 	sudo apt-get install dvswitch-server -y
 	if [ ! -f /opt/md380-emu/md380-emu ]; then
+		echo ">>> /opt/md380-emu/md380-emu 파일이 없으므로, md380-emu 추가 설치함"
 		sudo apt-get install md380-emu
 	fi
 }
@@ -146,6 +147,7 @@ function run_bookworm() {
 	sudo ./bookworm
 	sudo apt-get install dvswitch-server -y
 	if [ ! -f /opt/md380-emu/md380-emu ]; then
+		echo ">>> /opt/md380-emu/md380-emu 파일이 없으므로, md380-emu 추가 설치함"
 		sudo apt-get install md380-emu
 	fi
 }
