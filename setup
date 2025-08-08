@@ -556,13 +556,14 @@ if [ "$rtn2" -eq 0 ]; then
 elif [ "$rtn2" -eq 1 ]; then
         run_bookworm
 fi
-# --- qemu-arm-static 버전 확인
-check_qemu_version
-rtn=$?
-# --- 버전 6.2.0 보다 최신이면 downgrade to 6.2.0
-if [ "$rtn" -eq 0 ]; then
-	downgrade_qemu
-fi
+
+## --- qemu-arm-static 버전 확인
+#check_qemu_version
+#rtn=$?
+## --- 버전 6.2.0 보다 최신이면 downgrade to 6.2.0
+#if [ "$rtn" -eq 0 ]; then
+#	downgrade_qemu
+#fi
 
 installation_apps
 source /var/lib/dvswitch/dvs/var.txt
