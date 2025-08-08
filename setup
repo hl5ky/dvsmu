@@ -315,6 +315,13 @@ sudo wget -O ${dir}/$file https://raw.githubusercontent.com/hl5btf/DVSMU/main/$f
 sudo chmod +x ${dir}/$file
 done
 
+# /opt/md380-emu/qemu-arm-static 파일이 있으면, md380-emu00.service를 bookworm용으로 변경
+CHECK_FILE="/opt/md380-emu/qemu-arm-static"
+if [[ -f "$FILE" ]]; then
+	echo ">>> /opt/md380-emu에 qemu-arm-static 파일이 있으므로 md380-emu00.service를 bookworm용으로 변경"
+	sudo wget -O /var/lib/dvswitch/dvs/md380-emu00.service https://raw.githubusercontent.com/hl5btf/DVSMU/main/md380-emu00-bookworm.service
+	sudo chmod +x /var/lib/dvswitch/dvs/$file
+fi
 
 sudo mkdir /var/lib/dvswitch/dvs/adv/user00
 files="dvsm.adv dvsm.basic dvsm.macro dvsm.sh"
