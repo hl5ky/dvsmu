@@ -5,7 +5,10 @@
 - 만약 DVSwitch 서버가 설치되지 않았다면, setup 실행시에 자동으로 함께 설치된다.
 
 - 리눅스에 대한 경험이 없다면, 아래 사이트 참조
-  구글드라이브 
+
+ > https://drive.google.com/drive/u/0/folders/1ORv7ehiaA3olCU5YMU7j8d4y7i2xTj08
+
+ > 라즈베리파이+SD카드 필요. 윈도우즈로 설치/설정 가능
 #
 ### 특징:
   - 하나의 서버에 최고 40 명의 사용자를 추가 가능
