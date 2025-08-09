@@ -131,6 +131,7 @@ function run_buster() {
 	chmod +x buster
 	sudo ./buster
 	sudo apt-get install dvswitch-server -y
+	# md380-emu 관련 파일의 설치가 누락되는 경우가 있으므로 아래와 같이 처리
 	if [ ! -f /opt/md380-emu/md380-emu ]; then
 		echo ">>> /opt/md380-emu/md380-emu 파일이 없으므로, md380-emu 추가 설치함"
 		sudo apt-get install md380-emu
@@ -146,6 +147,7 @@ function run_bookworm() {
 	chmod +x bookworm
 	sudo ./bookworm
 	sudo apt-get install dvswitch-server -y
+	# md380-emu 관련 파일의 설치가 누락되는 경우가 있으므로 아래와 같이 처리
 	if [ ! -f /opt/md380-emu/md380-emu ]; then
 		echo ">>> /opt/md380-emu/md380-emu 파일이 없으므로, md380-emu 추가 설치함"
 		sudo apt-get install md380-emu
