@@ -222,6 +222,7 @@ fi
 }
 #====== installation_apps =============================================
 function installation_apps() {
+echo
 echo "========================="
 echo ">>> multitail, htop 설치"
 sudo apt-get install multitail -y
@@ -232,12 +233,13 @@ sudo apt install htop -y
 sudo apt-get install lighttpd -y
 
 # replace temp.sh with a file for Korean
-sudo wget -O /usr/local/dvs/temp.sh https://raw.githubusercontent.com/hl5btf/DVSwitch/main/temp.sh
+sudo wget -O /usr/local/dvs/temp.sh https://raw.githubusercontent.com/hl5btf/DVSwitch/main/temp.sh > /dev/null 2>&1
 sudo chmod +x /usr/local/dvs/temp.sh
 }
 
 #====== set_path =============================================
 function set_path() {
+echo
 echo "========================="
 echo ">>> set path"
 file="/etc/profile"
@@ -283,6 +285,7 @@ echo "$new_export_line" | sudo tee -a "$file" > /dev/null
 
 #====== set_alias =============================================
 function set_alias() {
+echo
 echo "========================="
 echo ">>> set alias"
 BASHRC="/etc/bash.bashrc"
@@ -312,6 +315,7 @@ done <<< "$ALIASES"
 
 #====== copy_files_for_userXX =============================================
 function copy_files_for_userXX() {
+echo
 echo "========================="
 echo ">>> copy files for userXX"
 files="analog_bridge00.service md380-emu00.service mmdvm_bridge00.service var00.txt"
@@ -330,18 +334,20 @@ if [[ -f "$CHECK_FILE" ]]; then
 	sudo chmod +x /var/lib/dvswitch/dvs/md380-emu00.service
 fi
 
-sudo mkdir /var/lib/dvswitch/dvs/adv/user00
-files="dvsm.adv dvsm.basic dvsm.macro dvsm.sh"
+echo ">>> copy dvsm files for user00"
 
-dir=/var/lib/dvswitch/dvs/adv/user00
+dir="/var/lib/dvswitch/dvs/adv/user00"
+if [ ! -d "$dir" ]; then sudo mkdir -p "$dir"; fi
+
+files="dvsm.adv dvsm.basic dvsm.macro dvsm.sh"
 for file in $files; do
-sudo wget -O ${dir}/$file https://raw.githubusercontent.com/hl5btf/DVSMU/main/$file > /dev/null 2>&1
+sudo wget -O ${dir}/$file https://raw.githubusercontent.com/hl5btf/DVSMU/main/$file
 sudo chmod +x ${dir}/$file
 done
 
 
-sudo mkdir /var/lib/dvswitch/dvs/adv/user00EN
-sudo mkdir /var/lib/dvswitch/dvs/adv/user00KR
+if [ ! -d "/var/lib/dvswitch/dvs/adv/user00EN" ]; then sudo mkdir -p "/var/lib/dvswitch/dvs/adv/user00EN"; fi
+if [ ! -d "/var/lib/dvswitch/dvs/adv/user00KR" ]; then sudo mkdir -p "/var/lib/dvswitch/dvs/adv/user00KR"; fi
 
 files="adv_audio.txt adv_dmr.txt adv_hotspot.txt adv_main.txt adv_managetg.txt adv_resetfvrt.txt adv_rxgain.txt adv_tgref.txt adv_tools.txt adv_txgain.txt"
 
@@ -353,6 +359,7 @@ done
 
 #====== change_freq_of_all_users =============================================
 function change_freq_of_all_users() {
+echo
 echo "========================="
 echo ">>> change freq of all users"
 # 주파수가 00000 일 경우에만, 430으로 수정
@@ -401,6 +408,7 @@ done
 
 #====== set_sudo_nopasswd =============================================
 function set_sudo_nopasswd() {
+echo
 echo "========================="
 echo ">>> set sudo nopasswd"
 # === 일반 사용자만 sudo NOPASSWD로 추가 (메인 sudoers 수정, 중복 방지) ===
@@ -451,6 +459,7 @@ rm "$TMPFILE"
 
 #====== download_and_update_apps =============================================
 function download_and_update_apps() {
+echo
 echo "========================="
 echo ">>> download apps (dvsmu man_log DMRIds_chk.sh bm_watchdog.sh config_main_user.sh auto_upgrade.sh)"
 files="dvsmu man_log DMRIds_chk.sh bm_watchdog.sh config_main_user.sh auto_upgrade.sh"
@@ -469,6 +478,7 @@ done
 
 #====== set_crontab =============================================
 function set_crontab() {
+echo
 echo "========================="
 echo ">>> set crontab"
 FILE_CRON=/etc/crontab
@@ -506,6 +516,7 @@ echo "3 3 * * * root flock -n /var/lock/auto_upgrade.lock /usr/local/dvs/auto_up
 
 #====== add_variables =============================================
 function add_variables() {
+echo
 echo "========================="
 echo ">>> add variables"
 #sudo wget -O /var/lib/dvswitch/dvs/var00.txt https://raw.githubusercontent.com/hl5btf/DVSMU/main/var00.txt
