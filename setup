@@ -341,7 +341,7 @@ if [ ! -d "$dir" ]; then sudo mkdir -p "$dir"; fi
 
 files="dvsm.adv dvsm.basic dvsm.macro dvsm.sh"
 for file in $files; do
-sudo wget -O ${dir}/$file https://raw.githubusercontent.com/hl5btf/DVSMU/main/$file
+sudo wget -O ${dir}/$file https://raw.githubusercontent.com/hl5btf/DVSMU/main/$file > /dev/null 2>&1
 sudo chmod +x ${dir}/$file
 done
 
