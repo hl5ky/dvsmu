@@ -581,9 +581,19 @@ change_freq_of_all_users
 set_sudo_nopasswd
 
 # 아래 3개는 Github hl5btf/DVSMU/upgrade.sh와 동일 (수정시 동일하게 수정해야 함)
-download_and_update_apps
-set_crontab
-add_variables
+echo
+echo "========================="
+echo ">>> dvsmu_upgrade.sh"
+echo
+
+sudo wget https://raw.githubusercontent.com/hl5btf/DVSMU/main/dvsmu_upgrade.sh
+sudo chmod +x dvsmu_upgrade.sh
+sudo ./dvsmu_upgrade.sh
+sudo rm dvsmu_upgrade.sh
+
+#download_and_update_apps
+#set_crontab
+#add_variables
 }
 
 #====== run_all_functions_with_progress_bar =============================================
