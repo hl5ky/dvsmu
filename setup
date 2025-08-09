@@ -226,6 +226,9 @@ sudo apt-get install multitail -y
 
 sudo apt install htop -y
 
+# 대시보드: dvswitch의 bookworm 패케지에서 누락되어 있음
+sudo apt-get install lighttpd -y
+
 # replace temp.sh with a file for Korean
 sudo wget -O /usr/local/dvs/temp.sh https://raw.githubusercontent.com/hl5btf/DVSwitch/main/temp.sh
 sudo chmod +x /usr/local/dvs/temp.sh
