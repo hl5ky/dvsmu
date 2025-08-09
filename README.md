@@ -1,14 +1,6 @@
 본 프로그램은 DVSwitch 서버에 여러 사용자의 서버를 함께 구성할 수 있도록 만드는 보조 프로그램이다.
 
-즉, DVSwitch 서버와 함께 사용하여야 한다.
-#
-### 설치 방법:
-  - cd /tmp
-  - sudo wget https://github.com/hl5ky/dvsmu/raw/main/setup
-  - sudo chmod +x setup
-  - sudo ./setup
-
-    > setup을 실행하면 dvswitch-server도 함께 설치됨
+만약 DVSwitch 서버가 설치되지 않았다면, 아래의 setup 실행시에 자동으로 함께 설치된다.
 #
 ### 특징:
   - 하나의 서버에 최고 40 명의 사용자를 추가할 수 있다.
@@ -22,6 +14,14 @@
   - dvsMU의 업그레이드도 메뉴에서 가능하다.
   - 시스템 최적화를 통해서 보다 안정된 시스템을 만들 수 있다.
   - 마스터 서버에 문제가 생기면 최적의 마스터 서버로 자동 변경.
+#
+### 설치 방법:
+  - cd /tmp
+  - sudo wget https://github.com/hl5ky/dvsmu/raw/main/setup
+  - sudo chmod +x setup
+  - sudo ./setup
+
+    > setup을 실행하면 dvswitch-server도 함께 설치됨
 #
 ### 오라클 클라우드에 설치시 필요한 추가 설정:
   - 로칼 시간 설정 (자동리부팅 등의 시간 설정시 로칼시간으로 입력) https://blog.buffashe.com/2020/02/changing-ubuntu-timezone
