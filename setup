@@ -318,7 +318,7 @@ files="analog_bridge00.service md380-emu00.service mmdvm_bridge00.service var00.
 
 dir=/var/lib/dvswitch/dvs
 for file in $files; do
-sudo wget -O ${dir}/$file https://raw.githubusercontent.com/hl5btf/DVSMU/main/$file
+sudo wget -O ${dir}/$file https://raw.githubusercontent.com/hl5btf/DVSMU/main/$file > /dev/null 2>&1
 sudo chmod +x ${dir}/$file
 done
 
@@ -326,7 +326,7 @@ done
 CHECK_FILE="/opt/md380-emu/qemu-arm-static"
 if [[ -f "$CHECK_FILE" ]]; then
 	echo ">>> /opt/md380-emu 에 qemu-arm-static 파일이 있으므로 md380-emu00.service를 bookworm용으로 변경"
-	sudo wget -O /var/lib/dvswitch/dvs/md380-emu00.service https://raw.githubusercontent.com/hl5btf/DVSMU/main/md380-emu00-bookworm.service
+	sudo wget -O /var/lib/dvswitch/dvs/md380-emu00.service https://raw.githubusercontent.com/hl5btf/DVSMU/main/md380-emu00-bookworm.service > /dev/null 2>&1
 	sudo chmod +x /var/lib/dvswitch/dvs/md380-emu00.service
 fi
 
@@ -335,7 +335,7 @@ files="dvsm.adv dvsm.basic dvsm.macro dvsm.sh"
 
 dir=/var/lib/dvswitch/dvs/adv/user00
 for file in $files; do
-sudo wget -O ${dir}/$file https://raw.githubusercontent.com/hl5btf/DVSMU/main/$file
+sudo wget -O ${dir}/$file https://raw.githubusercontent.com/hl5btf/DVSMU/main/$file > /dev/null 2>&1
 sudo chmod +x ${dir}/$file
 done
 
@@ -346,8 +346,8 @@ sudo mkdir /var/lib/dvswitch/dvs/adv/user00KR
 files="adv_audio.txt adv_dmr.txt adv_hotspot.txt adv_main.txt adv_managetg.txt adv_resetfvrt.txt adv_rxgain.txt adv_tgref.txt adv_tools.txt adv_txgain.txt"
 
 for file in $files; do
-sudo wget -O /var/lib/dvswitch/dvs/adv/user00EN/$file https://raw.githubusercontent.com/hl5btf/DVSMU/main/EN/$file
-sudo wget -O /var/lib/dvswitch/dvs/adv/user00KR/$file https://raw.githubusercontent.com/hl5btf/DVSMU/main/KR/$file
+sudo wget -O /var/lib/dvswitch/dvs/adv/user00EN/$file https://raw.githubusercontent.com/hl5btf/DVSMU/main/EN/$file > /dev/null 2>&1
+sudo wget -O /var/lib/dvswitch/dvs/adv/user00KR/$file https://raw.githubusercontent.com/hl5btf/DVSMU/main/KR/$file > /dev/null 2>&1
 done
 }
 
