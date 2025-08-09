@@ -21,7 +21,7 @@
   - sudo chmod +x setup
   - sudo ./setup
 
-    (- setup을 실행하면 dvswitch-server도 함께 설치됨)
+    > setup을 실행하면 dvswitch-server도 함께 설치됨
 #
 ### 오라클 클라우드에 설치시 필요한 추가 설정:
   - 로칼 시간 설정 (자동리부팅 등의 시간 설정시 로칼시간으로 입력) https://blog.buffashe.com/2020/02/changing-ubuntu-timezone
