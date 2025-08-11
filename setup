@@ -2,14 +2,6 @@
 
 user_array=(01 02 03 04 05 06 07 08 09 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40)
 
-file="/var/lib/dvswitch/dvs/lan/language.txt"
-if [ ! -f "$file" ]; then
-    sudo cp /var/lib/dvswitch/dvs/lan/korean.txt $file
-fi
-# language.txt 가 없으면 아래 source에서 에러가 발생함
-
-source /var/lib/dvswitch/dvs/var.txt > /dev/null 2>&1
-
 #===================================================
 function check_qemu_version() {
 	echo "========================="
@@ -252,7 +244,13 @@ echo "========================="
 echo ">>> set path"
 file="/etc/profile"
 
-source /var/lib/dvswitch/dvs/var.txt
+file="/var/lib/dvswitch/dvs/lan/language.txt"
+if [ ! -f "$file" ]; then
+    sudo cp /var/lib/dvswitch/dvs/lan/korean.txt $file
+fi
+# language.txt 가 없으면 아래 source에서 에러가 발생함
+
+source /var/lib/dvswitch/dvs/var.txt > /dev/null 2>&1
 
 # 추가할 디렉토리 목록
 read -r -d '' new_dirs << 'EOF'
