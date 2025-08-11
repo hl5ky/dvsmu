@@ -24,17 +24,17 @@ function check_qemu_version() {
 
     if [ -z "$version_str" ]; then
         echo "빈문자열 - 버전을 추출할 수 없습니다"
-        return 2  # 버전 파싱 실패
+        qemu_ver=x  # 버전 파싱 실패
     fi
 
     # 기준 버전과 비교
     base_version="6.2.0"
     if dpkg --compare-versions "$version_str" le "$base_version"; then
-	echo ">>> 버전 6.2.0 이하 -> 현 상태 유지"
-        return 1  # 6.2.0 이하
+		echo ">>> 버전 6.2.0 이하 -> 현 상태 유지"
+        qemu_ver=lower  # 6.2.0 이하
     else
         echo ">>> 버전 $version_str -> 6.2.0으로 다운그레이드"
-	return 0  # 6.2.0 초과
+		qemu_ver=higher   # 6.2.0 초과
     fi
 }
 
@@ -505,19 +505,22 @@ check_md380-emu_and_install
 # --- CHECK_FILE이 있는지 확인. 없다면 dvswitch-server 설치버전을 buster로 판단
 CHECK_FILE="/opt/md380-emu/qemu-arm-static"
 if [[ ! -f "$CHECK_FILE" ]]; then
-        echo "파일 없음, buster로 판단"
+    echo "파일 없음, buster로 판단"
+    qemu_file_exist_in_opt=no
+else
+    echo "파일 존재"
+    qemu_file_exist_in_opt=yes
 fi
-rtn3=$?
 
 # --- qemu-arm-static 버전 확인
 check_qemu_version
-rtn4=$?
 
 # --- buster이면서 qemu 버전이 6.2.0 보다 최신이면, qemu를 6.2.0으로 downgrade
-if [ "$rtn3" -eq 0 ] && [ "$rtn4" -eq 0 ]; then
+if [ "$qemu_file_exist_in_opt" = "no" ] && [ "$qemu_ver" = "higher" ]; then
 echo ">>> buster이면서 qemu 버전이 6.2.0보다 최신이므로 qemu를 6.2.0으로 downgrade"
-	downgrade_qemu
+		downgrade_qemu
 fi
+
 
 echo
 echo "========================="
