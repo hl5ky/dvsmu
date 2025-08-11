@@ -131,22 +131,6 @@ function run_buster() {
 	chmod +x buster
 	sudo ./buster
 	sudo apt-get install dvswitch-server -y
-
-	echo ">>> Wait for syncing file system after installing dvswitch-server"
-    # 파일 시스템을 올바르게 읽기 위한 조치
-    wait # install이 완료될 때까지 기다림
-    sync # 파일 시스템 동기화
-    sync # 파일 시스템 동기화
-    sleep 2
-    stat /opt/md380-emu/md380-emu # 파일 생성 여부 추적
-
-	# md380-emu 관련 파일의 설치가 누락되는 경우가 있으므로 아래와 같이 처리
-	if [ ! -d "/opt/md380-emu" ] || [ ! -f /opt/md380-emu/md380-emu ]; then
-		echo ">>> /opt/md380-emu/md380-emu 파일이 없으므로, md380-emu 추가 설치함"
-		sudo apt-get install md380-emu
-	else
-		echo ">>> /opt/md380-emu/md380-emu 파일이 있으므로 md380-emu 추가 설치하지 않음"
-	fi
 }
 #===================================================
 function run_bookworm() {
@@ -158,22 +142,16 @@ function run_bookworm() {
 	chmod +x bookworm
 	sudo ./bookworm
 	sudo apt-get install dvswitch-server -y
-
-	echo ">>> Wait for syncing file system after installing dvswitch-server"
-    # 파일 시스템을 올바르게 읽기 위한 조치
-    wait # install이 완료될 때까지 기다림
-    sync # 파일 시스템 동기화
-    sync # 파일 시스템 동기화
-    sleep 2
-    stat /opt/md380-emu/md380-emu # 파일 생성 여부 추적
-
-	# md380-emu 관련 파일의 설치가 누락되는 경우가 있으므로 아래와 같이 처리
-	if [ ! -d "/opt/md380-emu" ] || [ ! -f /opt/md380-emu/md380-emu ]; then
-		echo ">>> /opt/md380-emu/md380-emu 파일이 없으므로, md380-emu 추가 설치함"
-		sudo apt-get install md380-emu
-	else
-		echo ">>> /opt/md380-emu/md380-emu 파일이 있으므로 md380-emu 추가 설치하지 않음"
-	fi
+}
+#===================================================
+function check_md380-emu_and_install() {
+    # dvswitch-server의 설치 도중에 md380-emu 관련 파일의 설치가 누락되는 경우가 있으므로 아래와 확인 및 처리
+    if [ ! -d "/opt/md380-emu" ] || [ ! -f /opt/md380-emu/md380-emu ]; then
+        echo ">>> /opt/md380-emu/md380-emu 파일이 없으므로, md380-emu 추가 설치함"
+        sudo apt-get install md380-emu
+    else
+        echo ">>> /opt/md380-emu/md380-emu 파일이 있으므로, md380-emu 추가 설치하지 않음"
+    fi
 }
 #===================================================
 function check_ARCHITECTURE() {
@@ -479,7 +457,9 @@ rm "$TMPFILE"
 # sudo visudo 로 확인하면 내용이 반영되어 있음
 }
 
-#====== run_all_functions =============================================
+#==================================================
+# run_all_functions
+#==================================================
 function run_all_functions() {
 # --- dvswitch-server가 설치되었는지 확인
 check_dvswitch
@@ -500,7 +480,18 @@ elif [ "$rtn2" -eq 1 ]; then
         run_bookworm
 fi
 
-# --- CHECK_FILE이 있는지 확인. 없다면 dvswitch-server 설치버전이 buster로 판단
+installation_apps
+source /var/lib/dvswitch/dvs/var.txt
+set_path
+set_alias
+copy_files_for_userXX
+change_freq_of_all_users
+set_sudo_nopasswd
+
+# --- dvswitch-server의 설치 도중에 md380-emu 관련 파일의 설치가 누락되는 경우가 있으므로 확인 및 처리
+check_md380-emu_and_install
+
+# --- CHECK_FILE이 있는지 확인. 없다면 dvswitch-server 설치버전을 buster로 판단
 CHECK_FILE="/opt/md380-emu/qemu-arm-static"
 if [[ ! -f "$CHECK_FILE" ]]; then
         echo "파일 없음, buster로 판단"
@@ -516,14 +507,6 @@ if [ "$rtn3" -eq 0 ] && [ "$rtn4" -eq 0 ]; then
 echo ">>> buster이면서 qemu 버전이 6.2.0보다 최신이므로 qemu를 6.2.0으로 downgrade"
 	downgrade_qemu
 fi
-
-installation_apps
-source /var/lib/dvswitch/dvs/var.txt
-set_path
-set_alias
-copy_files_for_userXX
-change_freq_of_all_users
-set_sudo_nopasswd
 
 echo
 echo "========================="
