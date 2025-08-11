@@ -75,8 +75,8 @@ echo "dpkg 아키텍처: $ARCH_DPKG"
 echo "uname 아키텍처: $ARCH_UNAME"
 
 # Step 1. 관련 서비스 중단
-echo ">>> 서비스 중단: $SERVICE_NAME"
-sudo systemctl stop $SERVICE_NAME
+# echo ">>> 서비스 중단: $SERVICE_NAME"
+# sudo systemctl stop $SERVICE_NAME
 
 # Step 2. 기존 QEMU 제거
 echo ">>> 기존 qemu-user-static 제거"
@@ -112,8 +112,8 @@ echo ">>> qemu-user-static 자동 업그레이드 차단"
 sudo apt-mark hold qemu-user-static
 
 # Step 7. 관련 서비스 재시작
-echo ">>> 서비스 재시작: $SERVICE_NAME"
-sudo systemctl restart $SERVICE_NAME
+# echo ">>> 서비스 재시작: $SERVICE_NAME"
+# sudo systemctl restart $SERVICE_NAME
 
 # 확인
 echo ">>> 설치된 QEMU 버전"
