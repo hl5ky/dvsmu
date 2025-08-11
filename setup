@@ -56,13 +56,15 @@ function downgrade_qemu() {
 # 3. amd64 / x86_64 -> amd64.deb
 
 # 순서는 아래와 같이
-# 1. 관련 서비스 중단
-# 2. 현재의 qemu 제거
-# 3. 각각의 아키텍쳐에 맞는 QEMU 6.2 팩케지 설정
-# 4. 다운로드 및 설치
-# 5. 의존성 자동 해결
-# 6. 자동 업그레이드 방지
-# 7. 관련 서비스 재시작
+# 1. 관련 파일 백업
+# 2. 관련 서비스 중단
+# 3. 현재의 qemu 제거
+# 4. 각각의 아키텍쳐에 맞는 QEMU 6.2 팩케지 설정
+# 5. 다운로드 및 설치
+# 6. 의존성 자동 해결
+# 7. 자동 업그레이드 방지
+# 8. 관련 파일 복원
+# 9. 관련 서비스 재시작
 
 #!/bin/bash
 
@@ -88,16 +90,22 @@ ARCH_UNAME=$(uname -m)                  # 예: armv7l, aarch64, x86_64
 echo "dpkg 아키텍처: $ARCH_DPKG"
 echo "uname 아키텍처: $ARCH_UNAME"
 
-# Step 1. 관련 서비스 중단
+# Step 1. 관련 파일 백업
+sudo mkdir -p /home/backup > /dev/null 2>&1
+sudo cp /opt/md380-emu/md380-emu /home/backup/ > /dev/null 2>&1
+sudo cp /opt/md380-emu/qemu-arm-static /home/backup/ > /dev/null 2>&1
+sudo cp /lib/systemd/system/md380-emu.service /home/backup/ > /dev/null 2>&1
+
+# Step 2. 관련 서비스 중단
 # echo ">>> 서비스 중단: $SERVICE_NAME"
 # sudo systemctl stop $SERVICE_NAME
 
-# Step 2. 기존 QEMU 제거
+# Step 3. 기존 QEMU 제거
 echo ">>> 기존 qemu-user-static 제거"
 sudo apt purge -y qemu-user-static
 sudo apt autoremove -y
 
-# Step 3. 아키텍처별 설치 파일 설정
+# Step 4. 아키텍처별 설치 파일 설정
 echo ">>> architecture별 qemu 팩케지 준비"
 QEMU_DEB_URL=""
 if [[ "$ARCH_DPKG" == "armhf" || "$ARCH_UNAME" == "armv7l" ]]; then
@@ -111,21 +119,29 @@ else
     return 1
 fi
 
-# Step 4. QEMU 6.2 설치
+# Step 5. QEMU 6.2 설치
 echo ">>> QEMU 6.2 패키지 다운로드 및 설치"
 cd /tmp
 wget -O qemu-user-static.deb "$QEMU_DEB_URL" || { echo "다운로드 실패"; return 1; }
 sudo dpkg -i qemu-user-static.deb
 
-# Step 5. 의존성 자동 해결
+# Step 6. 의존성 자동 해결
 echo ">>> 의존성 자동 해결"
 sudo apt -f install -y
 
-# Step 6. 자동 업그레이드 방지
+# Step 7. 자동 업그레이드 방지
 echo ">>> qemu-user-static 자동 업그레이드 차단"
 sudo apt-mark hold qemu-user-static
 
-# Step 7. 관련 서비스 재시작
+# Step 8. 관련 파일 복원
+sudo cp /home/backup/md380-emu /opt/md380-emu/ > /dev/null 2>&1
+sudo cp /home/backup/qemu-arm-static /opt/md380-emu/ > /dev/null 2>&1
+sudo cp /home/backup/md380-emu.service /lib/systemd/system/ > /dev/null 2>&1
+sudo rm -rf /home/backup > /dev/null 2>&1
+
+# Step 9. 관련 서비스 재시작
+sudo systemctl daemon-reload
+sudo systemctl enable md380-emu
 # echo ">>> 서비스 재시작: $SERVICE_NAME"
 # sudo systemctl restart $SERVICE_NAME
 
