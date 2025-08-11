@@ -4,6 +4,7 @@ user_array=(01 02 03 04 05 06 07 08 09 10 11 12 13 14 15 16 17 18 19 20 21 22 23
 
 #===================================================
 function check_qemu_manage_type() {
+echo
 echo "========================="
 echo ">>> qemu-arm-static 관리 방식 확인"
 
@@ -175,6 +176,7 @@ function run_bookworm() {
 }
 #===================================================
 function check_md380-emu_and_install() {
+	echo
 	echo "========================="
 	echo ">>> check_md380-emu_and_install"
     # dvswitch-server의 설치 도중에 md380-emu 관련 파일의 설치가 누락되는 경우가 있으므로 아래와 확인 및 처리
