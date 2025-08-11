@@ -555,7 +555,7 @@ if [ "$qemu_manage_type" = "old" ] && [ "$qemu_arm_ver" = "HigherThan6.2.0" ]; t
 		echo ">>> qemu 관리방식이 이전방식이면서 qemu 버전이 6.2.0 보다 높으므로 downgrade"
 		downgrade_qemu
 else
-		echo ">>> qemu-arm-static 버전 변경하지 않음"
+		echo ">>> qemu 관리가 새로운 방식이거나 버전이 6.2.0보다 높지 않으므로 qemu-arm-static 버전 변경하지 않음"
 fi
 
 
