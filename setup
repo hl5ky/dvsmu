@@ -357,7 +357,8 @@ done <<< "$ALIASES"
 
 #====== set_reboot_default =============================================
 function set_reboot_default() {
-    echo "========================="
+    echo
+	echo "========================="
     echo ">>> set_reboot_default"
 
     FILE_CRON=/etc/crontab
