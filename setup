@@ -40,7 +40,7 @@ function check_qemu_version() {
 		echo ">>> 버전 $version_str"
         qemu_arm_ver=SameOrLowerThan6.2.0  # 6.2.0 또는 이하
     else
-        echo ">>> 버전 $version_str -> 6.2.0 초과"
+        echo ">>> 버전 $version_str"
 		qemu_arm_ver=HigherThan6.2.0   # 6.2.0 초과
     fi
 }
