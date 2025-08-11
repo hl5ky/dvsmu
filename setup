@@ -215,9 +215,9 @@ function check_dvswitch() {
 echo "========================="
 echo ">>> dvswitch-server 의 설치가 되었는지 확인"
 if dpkg -l | grep -q "^ii  dvswitch-server"; then
-        return 0 # yes
+        dvswitch_already_installed=yes # yes
 else
-        return 1 # no
+        dvswitch_already_installed=no # no
 fi
 }
 #====== installation_apps =============================================
@@ -471,12 +471,12 @@ rm "$TMPFILE"
 function run_all_functions() {
 # --- dvswitch-server가 설치되었는지 확인
 check_dvswitch
-rtn1=$?
+
 # --- 설치되지 않았으면 장치의 아키텍쳐 확인 - 설치 준비
-if [ "$rtn1" -eq 0 ]; then
+if [ "$dvswitch_already_installed" = "yes" ]; then
         echo ">>> dvswitch-server가 설치되어 있음."
 	rtn2=999
-elif [ "$rtn1" -eq 1 ]; then
+elif [ "$dvswitch_already_installed" = "no" ]; then
         echo ">>> dvswitch-server가 설치되지 않았음."
         check_ARCHITECTURE
         rtn2=$?
