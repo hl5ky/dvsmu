@@ -9,10 +9,10 @@ echo ">>> qemu-arm-static 관리 방식 확인"
 
 CHECK_FILE="/opt/md380-emu/qemu-arm-static"
 if [[ ! -f "$CHECK_FILE" ]]; then
-    echo ">>> /opt/md380-emu/qemu-arm-static 파일 없음, 이전 방식"
+    echo ">>> /opt/md380-emu/qemu-arm-static 파일 없음. 이전 방식"
     qemu_manage_type=old
 else
-    echo ">>> /opt/md380-emu/qemu-arm-static 파일 있음, 새로운 방식"
+    echo ">>> /opt/md380-emu/qemu-arm-static 파일 있음. 새로운 방식"
     qemu_manage_type=new
 fi
 }
