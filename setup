@@ -132,6 +132,7 @@ function run_buster() {
 	sudo ./buster
 	sudo apt-get install dvswitch-server -y
 
+	echo ">>> Wait for syncing file system after installing dvswitch-server"
     # 파일 시스템을 올바르게 읽기 위한 조치
     wait # install이 완료될 때까지 기다림
     sync # 파일 시스템 동기화
@@ -158,6 +159,7 @@ function run_bookworm() {
 	sudo ./bookworm
 	sudo apt-get install dvswitch-server -y
 
+	echo ">>> Wait for syncing file system after installing dvswitch-server"
     # 파일 시스템을 올바르게 읽기 위한 조치
     wait # install이 완료될 때까지 기다림
     sync # 파일 시스템 동기화
