@@ -480,13 +480,36 @@ elif [ "$rtn2" -eq 1 ]; then
         run_bookworm
 fi
 
+echo ">>> stat1"
+stat /opt/md380-emu/md380-emu # 파일 생성 여부 추적
+
 installation_apps
+echo ">>> stat2"
+stat /opt/md380-emu/md380-emu # 파일 생성 여부 추적
+
 source /var/lib/dvswitch/dvs/var.txt
+echo ">>> stat3"
+stat /opt/md380-emu/md380-emu # 파일 생성 여부 추적
+
 set_path
+echo ">>> stat4"
+stat /opt/md380-emu/md380-emu # 파일 생성 여부 추적
+
 set_alias
+echo ">>> stat5"
+stat /opt/md380-emu/md380-emu # 파일 생성 여부 추적
+
 copy_files_for_userXX
+echo ">>> stat6"
+stat /opt/md380-emu/md380-emu # 파일 생성 여부 추적
+
 change_freq_of_all_users
+echo ">>> stat7"
+stat /opt/md380-emu/md380-emu # 파일 생성 여부 추적
+
 set_sudo_nopasswd
+echo ">>> stat8"
+stat /opt/md380-emu/md380-emu # 파일 생성 여부 추적
 
 # --- dvswitch-server의 설치 도중에 md380-emu 관련 파일의 설치가 누락되는 경우가 있으므로 확인 및 처리
 check_md380-emu_and_install
