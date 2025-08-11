@@ -495,11 +495,11 @@ fi
 
 # 4) 메인 sudoers에 추가할 내용 준비
 TMPFILE=$(mktemp)
-echo "# >>> Custom NOPASSWD users (자동 추가)" > "$TMPFILE"
+echo "# >>> Custom NOPASSWD users (자동 추가)" > "$TMPFILE" > /dev/null 2>&1
 printf "%s" "$NEED_ADD" | while read -r u; do
-    [ -n "$u" ] && echo "$u ALL=(ALL) NOPASSWD:ALL" >> "$TMPFILE"
+    [ -n "$u" ] && echo "$u ALL=(ALL) NOPASSWD:ALL" >> "$TMPFILE" > /dev/null 2>&1
 done
-echo >> "$TMPFILE"  # 마지막 빈줄
+echo >> "$TMPFILE"  # 마지막 빈줄 > /dev/null 2>&1
 
 # 5) visudo를 이용해 안전하게 sudoers 업데이트
 sudo bash -c "EDITOR='tee -a' visudo < '$TMPFILE'"
