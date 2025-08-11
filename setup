@@ -135,6 +135,8 @@ function run_buster() {
 	if [ ! -f /opt/md380-emu/md380-emu ]; then
 		echo ">>> /opt/md380-emu/md380-emu 파일이 없으므로, md380-emu 추가 설치함"
 		sudo apt-get install md380-emu
+	else
+		echo ">>> /opt/md380-emu/md380-emu 파일이 있으므로 md380-emu 추가 설치하지 않음"
 	fi
 }
 #===================================================
@@ -151,6 +153,8 @@ function run_bookworm() {
 	if [ ! -f /opt/md380-emu/md380-emu ]; then
 		echo ">>> /opt/md380-emu/md380-emu 파일이 없으므로, md380-emu 추가 설치함"
 		sudo apt-get install md380-emu
+	else
+		echo ">>> /opt/md380-emu/md380-emu 파일이 있으므로 md380-emu 추가 설치하지 않음"
 	fi
 }
 #===================================================
