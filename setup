@@ -141,7 +141,7 @@ function run_buster() {
     stat /opt/md380-emu/md380-emu # 파일 생성 여부 추적
 
 	# md380-emu 관련 파일의 설치가 누락되는 경우가 있으므로 아래와 같이 처리
-	if [ ! -f /opt/md380-emu/md380-emu ]; then
+	if [ ! -d "/opt/md380-emu" ] || [ ! -f /opt/md380-emu/md380-emu ]; then
 		echo ">>> /opt/md380-emu/md380-emu 파일이 없으므로, md380-emu 추가 설치함"
 		sudo apt-get install md380-emu
 	else
@@ -168,7 +168,7 @@ function run_bookworm() {
     stat /opt/md380-emu/md380-emu # 파일 생성 여부 추적
 
 	# md380-emu 관련 파일의 설치가 누락되는 경우가 있으므로 아래와 같이 처리
-	if [ ! -f /opt/md380-emu/md380-emu ]; then
+	if [ ! -d "/opt/md380-emu" ] || [ ! -f /opt/md380-emu/md380-emu ]; then
 		echo ">>> /opt/md380-emu/md380-emu 파일이 없으므로, md380-emu 추가 설치함"
 		sudo apt-get install md380-emu
 	else
