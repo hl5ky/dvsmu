@@ -533,7 +533,6 @@ elif [ "$rtn2" -eq 1 ]; then
         run_bookworm
 fi
 
-
 installation_apps
 set_path
 set_alias
@@ -541,6 +540,7 @@ set_reboot_default
 copy_files_for_userXX
 change_freq_of_all_users
 set_sudo_nopasswd
+
 # --- dvswitch-server의 설치 도중에 md380-emu 관련 파일의 설치가 누락되는 경우가 있으므로 확인 및 처리
 check_md380-emu_and_install
 
@@ -558,16 +558,16 @@ else
 		echo ">>> qemu 관리가 새로운 방식이거나 버전이 6.2.0보다 높지 않으므로 qemu-arm-static 버전 변경하지 않음"
 fi
 
+#echo
+#echo "========================="
+#echo ">>> dvsmu_upgrade.sh"
+#echo
 
-echo
-echo "========================="
-echo ">>> dvsmu_upgrade.sh"
-echo
-
-sudo wget https://raw.githubusercontent.com/hl5btf/DVSMU/main/dvsmu_upgrade.sh
-sudo chmod +x dvsmu_upgrade.sh
-sudo ./dvsmu_upgrade.sh
-sudo rm dvsmu_upgrade.sh
+#sudo wget https://raw.githubusercontent.com/hl5btf/DVSMU/main/dvsmu_upgrade.sh
+#sudo chmod +x dvsmu_upgrade.sh
+#sudo ./dvsmu_upgrade.sh
+#sleep 1
+#sudo rm dvsmu_upgrade.sh
 }
 
 #====== run_all_functions_with_progress_bar =============================================
@@ -590,17 +590,21 @@ done
 #==================================================
 # MAIN SCRIPT
 #==================================================
-if [ -z "$1" ]; then
+if [[ "$1" == "show" || "$1" == "continue" ]]; then
 	run_all_functions_with_progress_bar
 else
 	run_all_functions
 fi
 
 echo -e "\n"
-echo "설정이 완료되었습니다."
+echo "setup 설정이 완료되었습니다."
 echo
+
+if [[ "$1" == "continue" ]]; then exit 0; fi
+
 echo "ENTER를 누르면 리부팅합니다."
 echo
+sleep 1
 sudo rm setup
 read
 sudo reboot
