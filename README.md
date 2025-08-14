@@ -1,6 +1,5 @@
 ## ⚠️ Korean Only
-> **Notice:** This program is written in Korean only.  
-> There are no plans to provide English or other language versions.
+> **Notice:** English or other language versions are not planned.
 
 
 ### 안내: ###
