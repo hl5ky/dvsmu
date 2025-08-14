@@ -3,7 +3,7 @@
 > **Notice:** This program is written in Korean only.  
 > English or other language versions are not planned. Please don't ask.
 
-You can still try it — it’s very intuitive, and I added some English to the menu. That said, I can't guarantee it. GL.
+You can still try it — it’s very intuitive, and I added some English to the menu. That said, I can't guarantee it. GL, de HL5KY.
 <br>
 
 > After installation, open terminal mode and type "/usr/local/dvs/dvsmu" to execute.
