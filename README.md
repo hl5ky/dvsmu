@@ -31,7 +31,7 @@ You can still try it — it’s very intuitive. That said, I can't guarantee it.
   - 자동화 - 본래 마스트서버 복구시 자동으로 복원
   - 자동화 - qemu 문제 아키텍쳐에 맞게 자동 처리
 #
-### 설치 방법 (installation): ###
+### 설치 방법 (Installation): ###
   - cd ~
   - sudo wget https://github.com/hl5ky/dvsmu/raw/main/setup
   - sudo chmod +x setup
@@ -45,8 +45,9 @@ You can still try it — it’s very intuitive. That said, I can't guarantee it.
   - 디스크 SWAP 설정 https://yeon-kr.tistory.com/174
   - 추가사용자의 포트 개방 https://kibua20.tistory.com/124
 #
-### 실행방법: ###
+### 실행방법 (Excution): ###
   - ssh로 연결하고, 터미널모드에서 dvsmu를 입력후 엔터를 누르면 실행된다.
+  - In terminal mode, type "/usr/local/dvs/dvsmu"
 #
 ### 사용방법: ###
   - 메인사용자의 설정을 한 후에 추가 사용자를 설정한다.
