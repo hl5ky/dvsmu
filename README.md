@@ -39,7 +39,6 @@ You can still try it — it’s very intuitive. That said, I can't guarantee it.
   - sudo ./setup
 
     > sudo ./setup show -> 설치 상세를 볼 수 있음
-
     > setup을 실행하면 dvswitch-server도 함께 설치됨
 #
 ### 오라클 클라우드에 설치시 필요한 추가 설정: ###
