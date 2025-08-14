@@ -5,6 +5,8 @@
 
 You can still try it — it’s very intuitive. That said, I can't guarantee it.<br>
 
+> After installation, open terminal mode and type "/usr/local/dvs/dvsmu"
+
 <br>
 
 ### 안내: ###
@@ -45,9 +47,8 @@ You can still try it — it’s very intuitive. That said, I can't guarantee it.
   - 디스크 SWAP 설정 https://yeon-kr.tistory.com/174
   - 추가사용자의 포트 개방 https://kibua20.tistory.com/124
 #
-### 실행방법 (Excution): ###
+### 실행방법: ###
   - ssh로 연결하고, 터미널모드에서 dvsmu를 입력후 엔터를 누르면 실행된다.
-  - In terminal mode, type "/usr/local/dvs/dvsmu"
 #
 ### 사용방법: ###
   - 메인사용자의 설정을 한 후에 추가 사용자를 설정한다.
