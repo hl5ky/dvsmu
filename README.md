@@ -15,10 +15,11 @@ That said, I can't guarantee it. GL, de HL5KY.<br>
 > dvswitch-server;<br>
 > The setup will install dvswitch-server if it is not already installed.<br>
 > It supports either Buster or Bookworm, depending on your system architecture.<br>
+<br>
 > Program automation;<br>
-> - Automatic management of the BM master server<br>
-> - Automatic upgrading of dvsmu<br>
-> - Automatic daily reboot when users are inactive
+> Automatic management of the BM master server<br>
+> Automatic upgrading of dvsmu<br>
+> Automatic daily reboot when users are inactive
 
 <br>
 
