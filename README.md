@@ -32,7 +32,7 @@ You can still try it — it’s very intuitive. That said, I can't guarantee it.
   - 자동화 - 본래 마스트서버 복구시 자동으로 복원
   - 자동화 - qemu 문제 아키텍쳐에 맞게 자동 처리
 #
-### 설치 방법: ###
+### 설치 방법 (Installtion): ###
   - cd ~
   - sudo wget https://github.com/hl5ky/dvsmu/raw/main/setup
   - sudo chmod +x setup
