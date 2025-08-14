@@ -4,8 +4,6 @@
 > English or other language versions are not planned.
 
 You can still try it — it’s very intuitive. That said, I can't guarantee it.<br>
-73, de HL5KY
-
 
 <br>
 
