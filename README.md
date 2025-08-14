@@ -10,7 +10,7 @@ That said, I can't guarantee it. GL, de HL5KY.<br>
 > cd ~<br>
 > sudo wget https://github.com/hl5ky/dvsmu/raw/main/setup<br>
 > sudo chmod +x setup<br>
-> sudo ./setup<br>
+> sudo ./setup  (reboot needed)<br>
 > After installation, open a terminal and type "dvsmu" to run.<br>
 
 > dvswitch-server;<br>
@@ -52,7 +52,7 @@ That said, I can't guarantee it. GL, de HL5KY.<br>
   - cd ~
   - sudo wget https://github.com/hl5ky/dvsmu/raw/main/setup
   - sudo chmod +x setup
-  - sudo ./setup
+  - sudo ./setup  (설치후 필히 리부팅)
 
     > sudo ./setup show -> 설치 상세를 볼 수 있음<br>
     > setup을 실행하면 dvswitch-server도 함께 설치됨
