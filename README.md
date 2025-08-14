@@ -8,7 +8,21 @@ You can still try it - it’s very intuitive, and I added some English to the me
 That said, I can't guarantee it. GL, de HL5KY.
 <br>
 
-> After installation, open terminal mode and type "/usr/local/dvs/dvsmu" to execute.
+> Installation & excution;<br>
+> cd ~<br>
+> sudo wget https://github.com/hl5ky/dvsmu/raw/main/setup<br>
+> sudo chmod +x setup<br>
+> sudo ./setup<br>
+> After installation, open a terminal and type "dvsmu" to run.<br>
+<br>
+> dvswitch-server;<br>
+> The setup will install dvswitch-server if it is not already installed.<br>
+> It supports either Buster or Bookworm, depending on your system architecture.<br>
+<br>
+> Program automation;<br>
+> - Automatic management of the BM master server<br>
+> - Automatic upgrading of dvsmu<br>
+> - Automatic daily reboot when users are inactive
 
 <br>
 
