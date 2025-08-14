@@ -1,6 +1,6 @@
 ### ⚠️ Korean Only, but...
 
-> Notice!
+> Notice!<br>
 > This program is written in Korean only.  
 > English or other language versions are not planned. Please don't ask.
 
