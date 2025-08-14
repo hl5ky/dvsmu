@@ -3,11 +3,6 @@
 > **Notice:** This program is written in Korean only.  
 > English or other language versions are not planned.
 
-### ⚠️ Korean Only
-
-> **Notice:** This program is written in Korean only.  
-> English or other language versions are not planned.
-
 You can still use it — it’s very intuitive. That said, I can't guarantee it.
 
 
