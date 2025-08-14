@@ -24,7 +24,7 @@
   - 자동화 - qemu 문제 아키텍쳐에 맞게 자동 처리
 #
 ### 설치 방법: ###
-  - cd /tmp
+  - cd ~
   - sudo wget https://github.com/hl5ky/dvsmu/raw/main/setup
   - sudo chmod +x setup
   - sudo ./setup
