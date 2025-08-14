@@ -6,7 +6,7 @@
 
 You can still try it - it’s very intuitive, and I added some English to the menu.<br>
 That said, I can't guarantee it. GL, de HL5KY.<br>
-> Installation & excution;<br>
+> Installation & execution;<br>
 > cd ~<br>
 > sudo wget https://github.com/hl5ky/dvsmu/raw/main/setup<br>
 > sudo chmod +x setup<br>
