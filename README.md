@@ -5,10 +5,7 @@
 
 You can still try it — it’s very intuitive. That said, I can't guarantee it.<br>
 
-> After installation, open terminal mode and type "/usr/local/dvs/dvsmu" to execute.
-
-
-<br>
+> After installation, open terminal mode and type "/usr/local/dvs/dvsmu" to execute.<br>
 
 ### 안내: ###
 - dvsMU는 DVSwitch 서버에 여러 사용자의 서버를 함께 구성할 수 있도록 만드는 보조 프로그램이다.
