@@ -1,7 +1,4 @@
 ## ⚠️ Korean Only
-> **Notice:** English or other language versions are not planned.
-
-## ⚠️ Korean Only
 
 > **Notice:** This program is written in Korean only.  
 > English or other language versions are not planned.
