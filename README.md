@@ -1,4 +1,7 @@
-> Korean only. No plans for English or other languages.
+## ⚠️ Korean Only
+> **Notice:** This program is written in Korean only.  
+> There are no plans to provide English or other language versions.
+
 
 ### 안내: ###
 - dvsMU는 DVSwitch 서버에 여러 사용자의 서버를 함께 구성할 수 있도록 만드는 보조 프로그램이다.
