@@ -17,7 +17,7 @@ You can still try it — it’s very intuitive, and I added some English to the 
 
 - 만약 DVSwitch 서버가 설치되지 않았다면, setup 실행시에 자동으로 함께 설치된다.
 
-- 리눅스에 대한 경험이 없다면, 아래 사이트의 DVSwitch 참조
+- 리눅스에 대한 경험이 없다면, 이미지파일로 윈도우즈에서 작업 가능. 아래 사이트의 DVSwitch 폴더 참조
 
   > https://drive.google.com/drive/u/0/folders/1ORv7ehiaA3olCU5YMU7j8d4y7i2xTj08<br>
   > 이미지파일+설명서 제공. 라즈베리파이+SD카드 필요. 설치/기본설정은 윈도우즈로 가능
