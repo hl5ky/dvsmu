@@ -5,11 +5,7 @@
 
 You can still try it — it’s very intuitive. That said, I can't guarantee it.<br>
 
-> After installation, open a terminal mode and type
-
-/usr/local/dvs/dvsmu
-
-to execute the program.
+> After installation, open a terminal mode and type "/usr/local/dvs/dvsmu" to execute.
 
 
 <br>
