@@ -1,6 +1,7 @@
 ### ⚠️ Korean Only, but...
 
-> <span style="color:orange; font-weight:bold;">Notice!</span> This program is written in Korean only.  
+> ## ⚠️ Notice!
+> This program is written in Korean only.  
 > English or other language versions are not planned. Please don't ask.
 
 You can still try it - it’s very intuitive, and I added some English to the menu. That said, I can't guarantee it. GL, de HL5KY.
