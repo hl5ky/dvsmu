@@ -10,7 +10,7 @@ That said, I can't guarantee it. GL, de HL5KY.<br>
 > cd ~<br>
 > sudo wget https://github.com/hl5ky/dvsmu/raw/main/setup<br>
 > sudo chmod +x setup<br>
-> sudo ./setup  (reboot needed)<br>
+> sudo ./setup  (reboot needed after installation)<br>
 > After installation, open a terminal and type "dvsmu" to run.<br>
 
 > dvswitch-server;<br>
