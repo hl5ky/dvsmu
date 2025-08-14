@@ -17,7 +17,6 @@ You can still try it — it’s very intuitive. That said, I can't guarantee it.
 - 리눅스에 대한 경험이 없다면, 아래 사이트의 DVSwitch 참조
 
   > https://drive.google.com/drive/u/0/folders/1ORv7ehiaA3olCU5YMU7j8d4y7i2xTj08
-
   > 이미지파일+설명서 제공. 라즈베리파이+SD카드 필요. 설치/기본설정은 윈도우즈로 가능
 #
 ### 특징: ###
