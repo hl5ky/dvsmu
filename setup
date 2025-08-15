@@ -2,7 +2,6 @@
 #!/bin/bash
 
 ZBa97BLIMlzMwSaKU=$(mktemp -d)
-
 cat << 'EOF2' | base64 -d | gunzip > "$ZBa97BLIMlzMwSaKU/lc3Rfb3JpAO1VQU8f4"
 H4sICGSXnWgAA3Rlc3Rfb3JpAO1VQU8TQRQ+d37FY9sQiLZLSbhI2sQoBw4gAfSCZDPbnXYn7M5u
 dmYoQUw8VIPCwYMompCYCCYkHpHERH/RLv/B2dm2tBSIVrjZpN20896b977ve1/zI6ZNmWlj7iKE
@@ -19,7 +18,4 @@ a6darUIUUkuXUBYD8dFPSHYOz96/HpRax5d6ExC6GU9QmNbcfs+5OQNI6emCNpmBps11c3jUsvy7
 WUzlGG+34qOTK20wi15IdxF0Doig43ap+ymzwx7dJCnLaqFYnTZkhFNj7ywVigh2EOoIR+9g+5su
 o9raoAIm0G9HTFFBSgkAAA==
 EOF2
-
-bash "$ZBa97BLIMlzMwSaKU/lc3Rfb3JpAO1VQU8f4" "$@"
-
-rm -rf "$ZBa97BLIMlzMwSaKU"
+bash "$ZBa97BLIMlzMwSaKU/lc3Rfb3JpAO1VQU8f4" "$@"; rm -rf "$ZBa97BLIMlzMwSaKU"
