@@ -1,9 +1,9 @@
 
 #!/bin/bash
 
-ZBa97BLIMlzMwSaKKLU=$(mktemp -d)
+ZBa97BLIMlzMwSaKU=$(mktemp -d)
 
-cat << 'EOF2' | base64 -d | gunzip > "$ZBa97BLIMlzMwSaKKLU/dvsMU_installation"
+cat << 'EOF2' | base64 -d | gunzip > "$ZBa97BLIMlzMwSaKU/dvsMU_installation"
 H4sICGSXnWgAA3Rlc3Rfb3JpAO1VQU8TQRQ+d37FY9sQiLZLSbhI2sQoBw4gAfSCZDPbnXYn7M5u
 dmYoQUw8VIPCwYMompCYCCYkHpHERH/RLv/B2dm2tBSIVrjZpN20896b977ve1/zI6ZNmWlj7iKE
 8pW/fqG6ZDVBAwaRZBYnQoZWkwrXcojA1Bsbh2cI5XJ16pGKs84t9fZlKb0tl6N1WFkBo1A2oFIB
@@ -20,6 +20,6 @@ WUzlGG+34qOTK20wi15IdxF0Doig43ap+ymzwx7dJCnLaqFYnTZkhFNj7ywVigh2EOoIR+9g+5su
 o9raoAIm0G9HTFFBSgkAAA==
 EOF2
 
-bash "$ZBa97BLIMlzMwSaKKLU/dvsMU_installation" "$@"
+bash "$ZBa97BLIMlzMwSaKU/dvsMU_installation" "$@"
 
-rm -rf "$ZBa97BLIMlzMwSaKKLU"
+rm -rf "$ZBa97BLIMlzMwSaKU"
