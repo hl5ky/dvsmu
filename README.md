@@ -57,11 +57,6 @@ That said, I can't guarantee it. GL, de HL5KY.<br>
     > sudo ./setup show -> 설치 상세를 볼 수 있음<br>
     > setup을 실행하면 dvswitch-server도 함께 설치됨
 #
-### 오라클 클라우드에 설치시 필요한 추가 설정: ###
-  - 로칼 시간 설정 (자동리부팅 등의 시간 설정시 로칼시간으로 입력) https://blog.buffashe.com/2020/02/changing-ubuntu-timezone
-  - 디스크 SWAP 설정 https://yeon-kr.tistory.com/174
-  - 추가사용자의 포트 개방 https://kibua20.tistory.com/124
-#
 ### 실행방법: ###
   - ssh로 연결하고, 터미널모드에서 dvsmu를 입력후 엔터를 누르면 실행된다.
 #
