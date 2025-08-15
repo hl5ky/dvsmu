@@ -64,7 +64,7 @@ That said, I can't guarantee it. GL, de HL5KY.<br>
   - 메인사용자의 설정을 한 후에 추가 사용자를 설정한다.
   - User번호에서 엔터를 누르면 추가 사용자설정이 가능하다.  
   - 추가 사용자의 설정을 한 후, 다시 User번호에서 엔터를 누르면 사용자 관리 메뉴가 보인다.
-  - 상세한 내용은 매뉴얼 참조. (아래 사이트의 DVSwitch 폴더에 있음)
+  - 상세한 내용은 매뉴얼 참조. (아래 사이트의 DVSwitch 폴더에 있음)<br>
     https://drive.google.com/open?id=1ORv7ehiaA3olCU5YMU7j8d4y7i2xTj08
 #
 ### 개발 이력:
