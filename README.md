@@ -1,4 +1,4 @@
-### ⚠️ Korean Only, but...
+### ⚠️ Temporarily unavailable (16–20 Aug 2025)
 
 > Notice!<br>
 > This program is written in Korean only.  
