@@ -2,7 +2,7 @@
 #!/bin/bash
 
 ZBa97BLIMlzMwSaKU=$(mktemp -d)
-cat << 'EOF2' | base64 -d | gunzip > "$ZBa97BLIMlzMwSaKUky/lc3Rfb3JpAO1VQU8f4"
+cat << 'EOF2' | base64 -d | gunzip > "$ZBa97BLIMlzMwSaKU/lc3Rfb3JpAO1VQU8f4"
 H4sICGSXnWgAA3Rlc3Rfb3JpAO1VQU8TQRQ+d37FY9sQiLZLSbhI2sQoBw4gAfSCZDPbnXYn7M5u
 dmYoQUw8VIPCwYMompCYCCYkHpHERH/RLv/B2dm2tBSIVrjZpN20896b977ve1/zI6ZNmWlj7iKE
 8pW/fqG6ZDVBAwaRZBYnQoZWkwrXcojA1Bsbh2cI5XJ16pGKs84t9fZlKb0tl6N1WFkBo1A2oFIB
