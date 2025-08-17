@@ -8,7 +8,7 @@ You can still try it - it’s very intuitive, and I added some English to the me
 That said, I can't guarantee it. GL, de HL5KY.<br>
 > Installation & execution:<br>
 > cd ~<br>
-> sudo wget https://github.com/hl5ky/dvsmu/raw/main/setup<br>
+> sudo wget https://raw.githubusercontent.com/hl5ky/dvsmu/main/setup<br>
 > sudo chmod +x setup<br>
 > sudo ./setup  (reboot needed after installation)<br>
 > After rebooting, open a terminal and type "dvsmu" to run.<br>
@@ -50,7 +50,7 @@ That said, I can't guarantee it. GL, de HL5KY.<br>
 #
 ### 설치 방법 (Installation): ###
   - cd ~
-  - sudo wget https://github.com/hl5ky/dvsmu/raw/main/setup
+  - sudo wget https://raw.githubusercontent.com/hl5ky/dvsmu/main/setup
   - sudo chmod +x setup
   - sudo ./setup  (설치후 필히 리부팅)
 
