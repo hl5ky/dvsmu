@@ -37,7 +37,7 @@ That said, I can't guarantee it. GL, de HL5KY.<br>
   > https://drive.google.com/drive/u/0/folders/1ORv7ehiaA3olCU5YMU7j8d4y7i2xTj08<br>
   > 이미지파일+설명서 제공. 라즈베리파이+SD카드 필요. 설치/기본설정은 윈도우즈로 가능
 #
-### 특징: ###
+### ✅ 특징: ###
   - 하나의 서버에 최고 40 명의 사용자를 추가 가능
   - 전체 사용자의 호출부호, DMR ID, USRP Port 현황을 한 화면 표시
   - 각 사용자가 각자의 매크로를 사용 가능
@@ -49,7 +49,7 @@ That said, I can't guarantee it. GL, de HL5KY.<br>
   - 자동화 - 본래 마스트서버 복구시 자동으로 복원
   - 자동화 - qemu 문제 아키텍쳐에 맞게 자동 처리
 #
-### 설치 방법 (Installation): ###
+### ✅ 설치 방법 (Installation): ###
   - cd ~
   - sudo wget https://raw.githubusercontent.com/hl5ky/dvsmu/main/setup
   - sudo chmod +x setup
@@ -58,17 +58,17 @@ That said, I can't guarantee it. GL, de HL5KY.<br>
     > sudo ./setup show -> 설치 상세를 볼 수 있음<br>
     > setup을 실행하면 dvswitch-server도 함께 설치됨
 #
-### 실행방법: ###
+### ✅ 실행방법: ###
   - ssh로 연결하고, 터미널모드에서 dvsmu를 입력후 엔터를 누르면 실행된다.
 #
-### 사용방법: ###
+### ✅ 사용방법: ###
   - 메인사용자의 설정을 한 후에 추가 사용자를 설정한다.
   - User번호에서 엔터를 누르면 추가 사용자설정이 가능하다.  
   - 추가 사용자의 설정을 한 후, 다시 User번호에서 엔터를 누르면 사용자 관리 메뉴가 보인다.
   - 상세한 내용은 매뉴얼 참조. (아래 사이트의 DVSwitch 폴더에 있음)<br>
     https://drive.google.com/open?id=1ORv7ehiaA3olCU5YMU7j8d4y7i2xTj08
 #
-### 개발 이력:
+### ✅ 개발 이력:
   v.3.0 (2025. 8. 22.)
   - 자동화 - DVSwitch 및 dvsMU의 업그레이드 확인 및 실행
   - 자동화 - 마스터서버 문제 발생시 대체 서버로 자동 전환
