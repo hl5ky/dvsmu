@@ -1,8 +1,6 @@
 ### ✅ For Englsih users: ###
 
-You can add up to 40 users to your DVSwitch server, and they can all run simultaneously.
-
-#### Korean only, But ......
+dvsMU is an add-on program for DVSwitch. You can add up to 40 users to your DVSwitch server, and they can all run simultaneously.
 
 > This program is written in Korean only.  
 > English or other language versions are not planned. Please don't ask.
