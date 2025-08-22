@@ -1,4 +1,4 @@
-### ✅ For Englsih users: ###
+### ✅ For English users: ###
 
 dvsMU is an add-on program for DVSwitch. You can add up to 40 users to your DVSwitch server, and they can all run simultaneously.
 
