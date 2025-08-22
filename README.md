@@ -25,7 +25,7 @@ That said, I can't guarantee it. GL, de HL5KY.<br>
 
 <br>
 
-### 안내: ###
+### ✅ 안내: ###
 - dvsMU는 DVSwitch 서버에 여러 사용자의 서버를 함께 구성할 수 있도록 만드는 보조 프로그램이다.
 
 - setup은 우분투 등 O/S만 설치된 경우에, dvsMU의 설치 및 설정을 모두 한 번에 완료한다.
