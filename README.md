@@ -1,6 +1,6 @@
 You can add up to 40 users to your DVSwitch server, and they can all run simultaneously.
 
-### ⚠️ Temporarily unavailable (16–25 Aug 2025)
+### ⚠️ Korean only, But ......
 
 > This program is written in Korean only.  
 > English or other language versions are not planned. Please don't ask.
