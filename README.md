@@ -7,7 +7,7 @@ This program is written in Korean only. English or other language versions are n
 You can still try it - it’s very intuitive, and I added some English to the menu.<br>
 That said, I can't guarantee it. GL, de HL5KY.<br>
 > Installation & execution:<br>
-> cd ~<br>
+> cd /tmp<br>
 > sudo wget https://raw.githubusercontent.com/hl5ky/dvsmu/main/setup<br>
 > sudo chmod +x setup<br>
 > sudo ./setup  (reboot needed after installation)<br>
@@ -49,7 +49,7 @@ That said, I can't guarantee it. GL, de HL5KY.<br>
   - 자동화 - qemu 문제 아키텍쳐에 맞게 자동 처리
 #
 ### ✅ 설치 방법 (Installation): ###
-  - cd ~
+  - cd /tmp
   - sudo wget https://raw.githubusercontent.com/hl5ky/dvsmu/main/setup
   - sudo chmod +x setup
   - sudo ./setup  (설치후 필히 리부팅)
