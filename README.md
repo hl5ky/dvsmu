@@ -8,9 +8,9 @@ You can still try it - it’s very intuitive, and I added some English to the me
 That said, I can't guarantee it. GL, de HL5KY.<br>
 > Installation & execution:<br>
 > cd /tmp<br>
-> sudo wget https://raw.githubusercontent.com/hl5ky/dvsmu/main/setup<br>
-> sudo chmod +x setup<br>
-> sudo ./setup  (reboot needed after installation)<br>
+> wget -O setup https://raw.githubusercontent.com/hl5ky/dvsmu/main/setup<br>
+> chmod +x setup<br>
+> ./setup  (reboot needed after installation)<br>
 > After rebooting, open a terminal and type "dvsmu" to run.<br>
 
 > dvswitch-server:<br>
@@ -50,11 +50,11 @@ That said, I can't guarantee it. GL, de HL5KY.<br>
 #
 ### ✅ 설치 방법 (Installation): ###
   - cd /tmp
-  - sudo wget https://raw.githubusercontent.com/hl5ky/dvsmu/main/setup
-  - sudo chmod +x setup
-  - sudo ./setup  (설치후 필히 리부팅)
+  - wget -O setup https://raw.githubusercontent.com/hl5ky/dvsmu/main/setup
+  - chmod +x setup
+  - ./setup  (설치후 필히 리부팅)
 
-    > sudo ./setup show -> 설치 상세를 볼 수 있음<br>
+    > ./setup show -> 설치 상세를 볼 수 있음<br>
     > setup을 실행하면 dvswitch-server도 함께 설치됨
 #
 ### ✅ 실행방법: ###
