@@ -68,6 +68,10 @@ That said, I can't guarantee it. GL, de HL5KY.<br>
     https://drive.google.com/open?id=1ORv7ehiaA3olCU5YMU7j8d4y7i2xTj08
 #
 ### ✅ 개발 이력:
+  v.3.1 (2025. 8. 30.)
+  - 추가사용자수 최대 99명 (PC에 설치한 시스템)
+  - 라즈베리파이에서는 최대 40명.
+  
   v.3.0 (2025. 8. 22.)
   - 자동화 - DVSwitch 및 dvsMU의 업그레이드 확인 및 실행
   - 자동화 - 마스터서버 문제 발생시 대체 서버로 자동 전환
